@@ -2,8 +2,8 @@
 
 #ifdef _DEBUG
 
-#include "vld.h"
-#include "vld_def.h"
+#include "./VisualLeakDetector/vld.h"
+#include "./VisualLeakDetector/vld_def.h"
 
 #endif
 
