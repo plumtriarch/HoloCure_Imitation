@@ -1,7 +1,6 @@
 ﻿// HoloCure.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
 #include "pch.h"
-#include "framework.h"
 #include "HoloCure.h"
 
 #define MAX_LOADSTRING 100
@@ -64,7 +63,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_HOLOCURE));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_HOLOCURE);
+    wcex.lpszMenuName   = nullptr; 
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 

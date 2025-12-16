@@ -19,10 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Default\framework.h" />
     <ClInclude Include="Default\HoloCure.h" />
     <ClInclude Include="Default\Resource.h" />
-    <ClInclude Include="Default\targetver.h" />
     <ClInclude Include="Public\Global\GlobalVariables.h" />
     <ClInclude Include="Public\pch.h" />
     <ClInclude Include="Public\VisualLeakDetector\vld.h" />
@@ -47,6 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libraries\vld.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Private\Manager\" />
+    <Folder Include="Public\Manager\" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
