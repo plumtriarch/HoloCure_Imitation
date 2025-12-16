@@ -18,5 +18,18 @@
 #include <memory.h>
 #include <tchar.h>
 
+#include <memory>
+using namespace std;
 
 #include "./Global/GlobalVariables.h"
+
+#include "./Manager/IManager.h"
+#include "./GameObject/IGameObject.h"
+#include "./Component/IComponent.h"
+
+
+
+
+
+
+
