@@ -24,9 +24,11 @@ using namespace std;
 
 #include "./Global/GlobalVariables.h"
 
+#include "./Level/ILevel.h"
 #include "./Manager/IManager.h"
 #include "./GameObject/IGameObject.h"
 #include "./Component/IComponent.h"
+
 
 
 
