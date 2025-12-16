@@ -19,6 +19,7 @@
 #include <tchar.h>
 
 #include <memory>
+#include <iostream>
 using namespace std;
 
 #include "./Global/GlobalVariables.h"
