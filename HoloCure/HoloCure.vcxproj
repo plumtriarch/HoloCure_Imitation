@@ -24,8 +24,8 @@
     <ClInclude Include="Default\Resource.h" />
     <ClInclude Include="Default\targetver.h" />
     <ClInclude Include="Public\pch.h" />
-    <ClInclude Include="Public\vld.h" />
-    <ClInclude Include="Public\vld_def.h" />
+    <ClInclude Include="Public\VisualLeakDetector\vld.h" />
+    <ClInclude Include="Public\VisualLeakDetector\vld_def.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Default\HoloCure.cpp" />
