@@ -43,7 +43,14 @@ using namespace Gdiplus;
 #include "Manager/IManager.h"
 #include "GameObject/IGameObject.h"
 #include "Component/IComponent.h"
+
 #include "Manager/ServiceLocator/ServiceLocator.h"
+
+#include "Manager/InputManager/ManagerInput.h"
+#include "Manager/TimeManager/ManagerTime.h"
+#include "Manager/LevelManager/ManagerLevel.h"
+#include "Manager/ObjectManager/ManagerObject.h"
+#include "Manager/RenderManager/ManagerRender.h"
 
 
 
