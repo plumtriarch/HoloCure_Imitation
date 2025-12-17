@@ -12,6 +12,8 @@ void ManagerInput::PriorityUpdate(const float _delta_time)
     {
         if (GetAsyncKeyState(i) & 0x8000)
             key_state_[i] = true;
+        else
+            key_state_[i] = false;
     }
 }
 
