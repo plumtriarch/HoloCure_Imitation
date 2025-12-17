@@ -40,6 +40,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
+    Gdiplus::GdiplusStartupInput g_GdiPlusStartupInput;
+    ULONG_PTR g_GdiPlusToken;
+    Gdiplus::GdiplusStartup(&g_GdiPlusToken, &g_GdiPlusStartupInput, NULL);
     
     // Initialize Manager
     ServiceLocator::getInstance().registerService<ManagerTime>(ManagerTime::ManagerTimeDesc{60});
@@ -48,13 +51,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ServiceLocator::getInstance().registerService<ManagerObject>(IManager::ManagerDesc{});
     ServiceLocator::getInstance().registerService<ManagerRender>(IManager::ManagerDesc{});
     ServiceLocator::getInstance().registerService<ManagerGame>(IManager::ManagerDesc{});
+    ServiceLocator::getInstance().registerService<ManagerImage>(IManager::ManagerDesc{});
     
     shared_ptr<ManagerGame> game_manager = ServiceLocator::getInstance().get<ManagerGame>();
     
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_HOLOCURE));
-    Gdiplus::GdiplusStartupInput g_GdiPlusStartupInput;
-    ULONG_PTR g_GdiPlusToken;
-    Gdiplus::GdiplusStartup(&g_GdiPlusToken, &g_GdiPlusStartupInput, NULL);
+    
 
     
     MSG msg;
@@ -72,11 +74,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             }
         }
         game_manager->Tick();
-
-        
     }
-    Gdiplus::GdiplusShutdown(g_GdiPlusToken);
+    
     CoUninitialize();
+    // Gdiplus::GdiplusShutdown(g_GdiPlusToken);
     return (int) msg.wParam;
 }
 

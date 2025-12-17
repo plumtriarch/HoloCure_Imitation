@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Manager/RenderManager/ManagerRender.h"
 
+#include "Component/Sprite/ComponentSprite.h"
 
 ManagerRender::~ManagerRender()
 {
@@ -36,6 +37,9 @@ void ManagerRender::Render()
         }
     }
     
+    auto sprite = ComponentSprite::CreateComponent<ComponentSprite>(ComponentSprite::ComponentSpriteDesc{});
+    auto sprite_componet = static_pointer_cast<ComponentSprite>(sprite);
+    sprite_componet->Render(hMemDC);
     BitBlt(hdc_, 0, 0, g_window_size_x, g_window_size_y, hMemDC, 0, 0, SRCCOPY);
 }
 

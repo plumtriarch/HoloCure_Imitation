@@ -51,6 +51,7 @@ using namespace Gdiplus;
 #include "Manager/LevelManager/ManagerLevel.h"
 #include "Manager/ObjectManager/ManagerObject.h"
 #include "Manager/RenderManager/ManagerRender.h"
+#include "Manager/ImageManager/ManagerImage.h"
 
 
 

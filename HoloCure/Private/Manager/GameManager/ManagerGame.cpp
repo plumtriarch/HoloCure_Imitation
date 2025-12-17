@@ -14,7 +14,8 @@ void ManagerGame::Tick()
 {
     const float delta_time = time_manager_->GetDeltaTime();
     input_manager_->UpdateInput();
-    
+    level_manager_->UpdateLevel(delta_time);
+    object_manager_->UpdateObject(delta_time);
     render_manager_->Render();
 }
 
