@@ -11,7 +11,7 @@
 
 #include <stdint.h>
 #include <SDKDDKVer.h>
-#define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용을 Windows 헤더에서 제외합니다.
+// #define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용을 Windows 헤더에서 제외합니다.
 #include <windows.h>
 #include <stdlib.h>
 #include <malloc.h>
@@ -20,9 +20,22 @@
 
 #include <memory>
 #include <iostream>
-using namespace std;
+#include <unordered_map>
+#include <map>
+#include <set>
+#include <unordered_set>
+#include <vector>
+#include <list>
+#include <queue>
+#include <stack>
 
-#include "./Global/GlobalVariables.h"
+#include <gdiplus.h>
+#pragma comment(lib, "gdiplus.lib")
+
+using namespace std;
+using namespace Gdiplus;
+#include "Global/GlobalVariables.h"
+#include "Global/GlobalFunction.h"
 
 #include "./Level/ILevel.h"
 #include "./Manager/IManager.h"

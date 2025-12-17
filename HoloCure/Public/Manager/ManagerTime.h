@@ -17,12 +17,13 @@ public:
     void PriorityUpdate(const float _delta_time) override;
     void Update(const float _delta_time) override {};
     void LateUpdate(const float _delta_time) override {};
-    const float GetDeltaTime() const { return delta_time_; };
+    const float GetDeltaTime() const { return delta_time_ * time_factor_; };
 private:
     void SetTargetFps(const uint16_t _fps);
     
 private:
     float delta_time_{0.f};
+    float time_factor_{1.f};
     long long target_ticks{};
     
     LARGE_INTEGER frame_time_{};
