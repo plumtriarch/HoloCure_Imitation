@@ -30,6 +30,7 @@
     <ClInclude Include="Public\Level\LevelTitle.h" />
     <ClInclude Include="Public\Manager\ImageManager\ManagerImage.h" />
     <ClInclude Include="Public\Manager\IManager.h" />
+    <ClInclude Include="Public\Manager\InputManager\ManagerInput.h" />
     <ClInclude Include="Public\Manager\ManagerLevel.h" />
     <ClInclude Include="Public\Manager\ManagerObject.h" />
     <ClInclude Include="Public\Manager\ManagerTime.h" />
@@ -48,6 +49,7 @@
     <ClCompile Include="Private\Level\LevelTitle.cpp" />
     <ClCompile Include="Private\Manager\ImageManager\ManagerImage.cpp" />
     <ClCompile Include="Private\Manager\IManager.cpp" />
+    <ClCompile Include="Private\Manager\InputManager\ManagerInput.cpp" />
     <ClCompile Include="Private\Manager\ManagerLevel.cpp" />
     <ClCompile Include="Private\Manager\ManagerObject.cpp" />
     <ClCompile Include="Private\Manager\ManagerTime.cpp" />
