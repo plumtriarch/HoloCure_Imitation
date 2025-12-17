@@ -1,5 +1,4 @@
 #pragma once
-#include "IManager.h"
 
 class ManagerTime : public IManager
 {

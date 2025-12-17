@@ -27,14 +27,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_HOLOCURE, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
-    
     if (!InitInstance (hInstance, nCmdShow))
     {
         return FALSE;
     }
-
+    
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_HOLOCURE));
+    Gdiplus::GdiplusStartupInput g_GdiPlusStartupInput;
+    ULONG_PTR g_GdiPlusToken;
+    Gdiplus::GdiplusStartup(&g_GdiPlusToken, &g_GdiPlusStartupInput, NULL);
 
+    
     MSG msg;
     while (true)
     {
@@ -50,7 +53,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             }
         }
     }
-    
+    Gdiplus::GdiplusShutdown(g_GdiPlusToken);
+    CoUninitialize();
     return (int) msg.wParam;
 }
 
@@ -77,7 +81,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; 
+    hInst = hInstance; 
     
     RECT rc{ 0, 0, g_window_size_x, g_window_size_y };
 
@@ -89,15 +93,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
         rc.bottom - rc.top, 
         nullptr, nullptr, hInstance, nullptr);
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+    if (!hWnd)
+    {
+       return FALSE;
+    }
     g_hWnd = hWnd;
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
-
+    
    return TRUE;
 }
 
