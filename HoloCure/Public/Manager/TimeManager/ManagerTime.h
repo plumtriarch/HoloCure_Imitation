@@ -13,9 +13,6 @@ public:
     
 public:
     void Initialize(const ManagerDesc& _desc) override;
-    void PriorityUpdate(const float _delta_time) override;
-    void Update(const float _delta_time) override {};
-    void LateUpdate(const float _delta_time) override {};
     const float GetDeltaTime() const { return delta_time_ * time_factor_; };
 private:
     void SetTargetFps(const uint16_t _fps);

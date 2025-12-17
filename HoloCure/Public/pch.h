@@ -17,6 +17,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <typeindex>
 
 #include <memory>
 #include <iostream>
@@ -38,10 +39,11 @@ using namespace Gdiplus;
 #include "Global/GlobalVariables.h"
 #include "Global/GlobalFunction.h"
 
-#include "./Level/ILevel.h"
-#include "./Manager/IManager.h"
-#include "./GameObject/IGameObject.h"
-#include "./Component/IComponent.h"
+#include "Level/ILevel.h"
+#include "Manager/IManager.h"
+#include "GameObject/IGameObject.h"
+#include "Component/IComponent.h"
+#include "Manager/ServiceLocator/ServiceLocator.h"
 
 
 

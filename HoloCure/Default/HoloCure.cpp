@@ -3,7 +3,15 @@
 #include "pch.h"
 #include "HoloCure.h"
 
+#include "Manager/GameManager/ManagerGame.h"
+#include "Manager/InputManager/ManagerInput.h"
+#include "Manager/LevelManager/ManagerLevel.h"
+#include "Manager/ObjectManager/ManagerObject.h"
+#include "Manager/RenderManager/ManagerRender.h"
+#include "Manager/TimeManager/ManagerTime.h"
+
 #define MAX_LOADSTRING 100
+
 
 
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
@@ -31,6 +39,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     {
         return FALSE;
     }
+
+    
+    // Initialize Manager
+    ServiceLocator::getInstance().registerService<ManagerTime>(ManagerTime::ManagerTimeDesc{60});
+    ServiceLocator::getInstance().registerService<ManagerInput>(IManager::ManagerDesc{});
+    ServiceLocator::getInstance().registerService<ManagerLevel>(IManager::ManagerDesc{});
+    ServiceLocator::getInstance().registerService<ManagerObject>(IManager::ManagerDesc{});
+    ServiceLocator::getInstance().registerService<ManagerRender>(IManager::ManagerDesc{});
+    ServiceLocator::getInstance().registerService<ManagerGame>(IManager::ManagerDesc{});
+    
+    shared_ptr<ManagerGame> game_manager = ServiceLocator::getInstance().get<ManagerGame>();
     
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_HOLOCURE));
     Gdiplus::GdiplusStartupInput g_GdiPlusStartupInput;
@@ -52,6 +71,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 DispatchMessage(&msg);
             }
         }
+        game_manager->Tick();
+
+        
     }
     Gdiplus::GdiplusShutdown(g_GdiPlusToken);
     CoUninitialize();

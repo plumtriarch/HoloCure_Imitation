@@ -5,7 +5,7 @@ void ManagerInput::Initialize(const ManagerDesc& _desc)
 {
 }
 
-void ManagerInput::PriorityUpdate(const float _delta_time)
+void ManagerInput::UpdateInput()
 {
     memcpy(key_prev_state_, key_state_, sizeof(key_state_));
     for (auto i =0;i<0xFF;i++)
@@ -16,4 +16,5 @@ void ManagerInput::PriorityUpdate(const float _delta_time)
             key_state_[i] = false;
     }
 }
+
 

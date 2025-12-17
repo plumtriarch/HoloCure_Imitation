@@ -2,29 +2,28 @@
 #include "Manager/RenderManager/ManagerRender.h"
 
 
+ManagerRender::~ManagerRender()
+{
+    SelectObject(hMemDC, hOldBitmap);
+    DeleteObject(hMemBitmap);
+    DeleteDC(hMemDC);
+    DeleteObject(hBrush);
+}
+
 void ManagerRender::Initialize(const ManagerDesc& _desc)
 {
     hdc_ = GetDC(g_hWnd);
-}
-
-void ManagerRender::PriorityUpdate(const float _delta_time)
-{
-}
-
-void ManagerRender::Update(const float _delta_time)
-{
-}
-
-void ManagerRender::LateUpdate(const float _delta_time)
-{
-    HDC hMemDC = CreateCompatibleDC(hdc_);
-    HBITMAP hMemBitmap = CreateCompatibleBitmap(hdc_, g_window_size_x, g_window_size_y);
-    HBITMAP hOldBitmap = (HBITMAP)SelectObject(hMemDC, hMemBitmap);
     
+    hMemDC = CreateCompatibleDC(hdc_);
+    hMemBitmap = CreateCompatibleBitmap(hdc_, g_window_size_x, g_window_size_y);
+    hOldBitmap = (HBITMAP)SelectObject(hMemDC, hMemBitmap);
+    hBrush = CreateSolidBrush(RGB(0, 0, 0));
+}
+
+void ManagerRender::Render()
+{
     RECT rect = { 0, 0, g_window_size_x, g_window_size_y };
-    HBRUSH hBrush = CreateSolidBrush(RGB(30, 30, 30));
     FillRect(hMemDC, &rect, hBrush);
-    DeleteObject(hBrush);
     
     for (int i =0;i<static_cast<int>(RenderGroup::COUNT);i++)
     {
@@ -37,10 +36,6 @@ void ManagerRender::LateUpdate(const float _delta_time)
         }
     }
     
-
     BitBlt(hdc_, 0, 0, g_window_size_x, g_window_size_y, hMemDC, 0, 0, SRCCOPY);
-    
-    SelectObject(hMemDC, hOldBitmap);
-    DeleteObject(hMemBitmap);
-    DeleteDC(hMemDC);
 }
+

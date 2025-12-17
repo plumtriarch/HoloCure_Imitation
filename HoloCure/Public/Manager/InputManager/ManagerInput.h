@@ -11,10 +11,8 @@ public:
     
 public:
     void Initialize(const ManagerDesc& _desc) override;
-    void PriorityUpdate(const float _delta_time) override;
-    void Update(const float _delta_time) override {};
-    void LateUpdate(const float _delta_time) override{};
-    
+    void UpdateInput();
+
 public:
     bool GetKey(const uint8_t _key) const { return key_state_[_key]; }
     bool GetKeyDown(const uint8_t _key) const { return key_state_[_key] && !key_prev_state_[_key]; }

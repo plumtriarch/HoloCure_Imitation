@@ -12,9 +12,6 @@ public:
     
 public:
     void Initialize(const ManagerDesc& _desc) override;
-    void PriorityUpdate(const float _delta_time) override {};
-    void Update(const float _delta_time) override {};
-    void LateUpdate(const float _delta_time) override {};
 
 public:
     void InsertPng(const wstring& _filePath, const wstring& _key);

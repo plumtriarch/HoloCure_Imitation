@@ -11,9 +11,9 @@ public:
     };
 public:
     virtual void Initialize(const ManagerDesc& _desc) = 0;
-    virtual void PriorityUpdate(const float _delta_time) = 0;
-    virtual void Update(const float _delta_time) = 0;
-    virtual void LateUpdate(const float _delta_time) = 0;
+    // virtual void PriorityUpdate(const float _delta_time) = 0;
+    // virtual void Update(const float _delta_time) = 0;
+    // virtual void LateUpdate(const float _delta_time) = 0;
     
 public:
     template <typename T>

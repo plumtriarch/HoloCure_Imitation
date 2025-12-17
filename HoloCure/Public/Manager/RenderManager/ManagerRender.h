@@ -11,12 +11,13 @@ public:
     
 public:
     void Initialize(const ManagerDesc& _desc) override;
-    void PriorityUpdate(const float _delta_time) override;
-    void Update(const float _delta_time) override;
-    void LateUpdate(const float _delta_time) override;
-    
+    void Render();
 private:
     shared_ptr<class ManagerObject> object_manager_; 
     array<list<weak_ptr<IGameObject>>, static_cast<uint8_t>(RenderGroup::COUNT)> renderGroups_;
-    HDC hdc_;
+    HDC     hdc_{nullptr};
+    HDC     hMemDC{nullptr};
+    HBITMAP hMemBitmap{nullptr};
+    HBITMAP hOldBitmap{nullptr};
+    HBRUSH  hBrush{nullptr};
 };
