@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Manager/GameManager/ManagerGame.h"
-
+#include "Level/LevelGamePlay.h"
 void ManagerGame::Initialize(const ManagerDesc& _desc)
 {
     time_manager_ = ServiceLocator::getInstance().get<ManagerTime>();
@@ -8,6 +8,9 @@ void ManagerGame::Initialize(const ManagerDesc& _desc)
     level_manager_ = ServiceLocator::getInstance().get<ManagerLevel>();
     object_manager_ = ServiceLocator::getInstance().get<ManagerObject>();
     render_manager_ = ServiceLocator::getInstance().get<ManagerRender>();
+    
+    // Load Level
+    level_manager_->LoadLevel(LevelGamePlay::CreateLevel<LevelGamePlay>(LevelGamePlay::LevelGamePlayDesc{}));
 }
 
 void ManagerGame::Tick()

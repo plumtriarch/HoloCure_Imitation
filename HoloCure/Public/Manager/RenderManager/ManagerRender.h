@@ -11,9 +11,9 @@ public:
     
 public:
     void Initialize(const ManagerDesc& _desc) override;
+    void AddRenderGroup(const RenderGroup _group, const weak_ptr<IGameObject>& _object);
     void Render();
 private:
-    shared_ptr<class ManagerObject> object_manager_; 
     array<list<weak_ptr<IGameObject>>, static_cast<uint8_t>(RenderGroup::COUNT)> renderGroups_;
     HDC     hdc_{nullptr};
     HDC     hMemDC{nullptr};

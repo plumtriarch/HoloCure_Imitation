@@ -31,6 +31,14 @@
 #include <queue>
 #include <stack>
 
+#include <type_traits>
+#include <future>
+#include <functional>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <utility>
+
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")
 
@@ -46,13 +54,15 @@ using namespace Gdiplus;
 
 #include "Manager/ServiceLocator/ServiceLocator.h"
 
+#include "Manager/ThreadManager/ManagerThread.h"
 #include "Manager/InputManager/ManagerInput.h"
 #include "Manager/TimeManager/ManagerTime.h"
 #include "Manager/LevelManager/ManagerLevel.h"
 #include "Manager/ObjectManager/ManagerObject.h"
 #include "Manager/RenderManager/ManagerRender.h"
 #include "Manager/ImageManager/ManagerImage.h"
-
+#include "Manager/ThreadManager/ManagerThread.h"
+#include "Manager/GameManager/ManagerGame.h"
 
 
 

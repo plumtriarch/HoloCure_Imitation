@@ -12,7 +12,8 @@ public:
 public:
     void Initialize(const ManagerDesc& _desc) override;
     void UpdateLevel(const float _delta_time);
-    
+    void SetLevel(unique_ptr<ILevel> _level);
+    void LoadLevel(unique_ptr<ILevel> _level);
 private:
-    shared_ptr<ILevel> current_level_;
+    unique_ptr<ILevel> current_level_;
 };

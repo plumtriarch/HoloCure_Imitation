@@ -24,10 +24,12 @@
     <ClInclude Include="Public\Component\IComponent.h" />
     <ClInclude Include="Public\Component\Sprite\ComponentSprite.h" />
     <ClInclude Include="Public\GameObject\IGameObject.h" />
+    <ClInclude Include="Public\GameObject\Player\GameObjectPlayer.h" />
     <ClInclude Include="Public\Global\GlobalFunction.h" />
     <ClInclude Include="Public\Global\GlobalVariables.h" />
     <ClInclude Include="Public\Level\ILevel.h" />
     <ClInclude Include="Public\Level\LevelGamePlay.h" />
+    <ClInclude Include="Public\Level\LevelLoading.h" />
     <ClInclude Include="Public\Level\LevelTitle.h" />
     <ClInclude Include="Public\Manager\GameManager\ManagerGame.h" />
     <ClInclude Include="Public\Manager\ImageManager\ManagerImage.h" />
@@ -37,6 +39,7 @@
     <ClInclude Include="Public\Manager\ObjectManager\ManagerObject.h" />
     <ClInclude Include="Public\Manager\RenderManager\ManagerRender.h" />
     <ClInclude Include="Public\Manager\ServiceLocator\ServiceLocator.h" />
+    <ClInclude Include="Public\Manager\ThreadManager\ManagerThread.h" />
     <ClInclude Include="Public\Manager\TimeManager\ManagerTime.h" />
     <ClInclude Include="Public\pch.h" />
     <ClInclude Include="Public\VisualLeakDetector\vld.h" />
@@ -47,10 +50,12 @@
     <ClCompile Include="Private\Component\IComponent.cpp" />
     <ClCompile Include="Private\Component\Sprite\ComponentSprite.cpp" />
     <ClCompile Include="Private\GameObject\IGameObject.cpp" />
+    <ClCompile Include="Private\GameObject\Player\GameObjectPlayer.cpp" />
     <ClCompile Include="Private\Global\GlobalFunction.cpp" />
     <ClCompile Include="Private\Global\GlobalVariables.cpp" />
     <ClCompile Include="Private\Level\ILevel.cpp" />
     <ClCompile Include="Private\Level\LevelGamePlay.cpp" />
+    <ClCompile Include="Private\Level\LevelLoading.cpp" />
     <ClCompile Include="Private\Level\LevelTitle.cpp" />
     <ClCompile Include="Private\Manager\GameManager\ManagerGame.cpp" />
     <ClCompile Include="Private\Manager\ImageManager\ManagerImage.cpp" />
@@ -60,6 +65,7 @@
     <ClCompile Include="Private\Manager\ObjectManager\ManagerObject.cpp" />
     <ClCompile Include="Private\Manager\RenderManager\ManagerRender.cpp" />
     <ClCompile Include="Private\Manager\ServiceLocator\ServiceLocator.cpp" />
+    <ClCompile Include="Private\Manager\ThreadManager\ManagerThread.cpp" />
     <ClCompile Include="Private\Manager\TimeManager\ManagerTime.cpp" />
     <ClCompile Include="Private\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -139,6 +145,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)Public\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -158,6 +165,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)Public\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -173,6 +181,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)Public\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -192,6 +201,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)Public\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

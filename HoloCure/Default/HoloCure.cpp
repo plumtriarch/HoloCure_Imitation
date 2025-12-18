@@ -3,13 +3,6 @@
 #include "pch.h"
 #include "HoloCure.h"
 
-#include "Manager/GameManager/ManagerGame.h"
-#include "Manager/InputManager/ManagerInput.h"
-#include "Manager/LevelManager/ManagerLevel.h"
-#include "Manager/ObjectManager/ManagerObject.h"
-#include "Manager/RenderManager/ManagerRender.h"
-#include "Manager/TimeManager/ManagerTime.h"
-
 #define MAX_LOADSTRING 100
 
 
@@ -52,6 +45,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ServiceLocator::getInstance().registerService<ManagerRender>(IManager::ManagerDesc{});
     ServiceLocator::getInstance().registerService<ManagerGame>(IManager::ManagerDesc{});
     ServiceLocator::getInstance().registerService<ManagerImage>(IManager::ManagerDesc{});
+    ServiceLocator::getInstance().registerService<ManagerThread>(IManager::ManagerDesc{});
     
     shared_ptr<ManagerGame> game_manager = ServiceLocator::getInstance().get<ManagerGame>();
     
@@ -76,7 +70,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         game_manager->Tick();
     }
     
-    CoUninitialize();
     // Gdiplus::GdiplusShutdown(g_GdiPlusToken);
     return (int) msg.wParam;
 }

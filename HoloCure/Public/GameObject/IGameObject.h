@@ -1,6 +1,6 @@
 #pragma once
 
-class IGameObject
+class IGameObject : public enable_shared_from_this<IGameObject>
 {
 public:
     virtual ~IGameObject() = default;
@@ -13,7 +13,7 @@ public:
     virtual void PriorityUpdate(const float _delta_time) = 0;
     virtual void Update(const float _delta_time) = 0;
     virtual void LateUpdate(const float _delta_time) = 0;
-    virtual void Render() = 0;
+    virtual void Render(HDC _hDC) = 0;
 public:
     template <typename T>
     static std::shared_ptr<IGameObject> CreateGameObject(const GameObjectDesc& _desc)

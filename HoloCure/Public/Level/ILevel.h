@@ -13,13 +13,18 @@ public:
     virtual void PriorityUpdate(const float _delta_time) = 0;
     virtual void Update(const float _delta_time) = 0;
     virtual void LateUpdate(const float _delta_time) = 0;
+    virtual void LoadingResources() = 0;
+    virtual void LevelStart() = 0;
+    const bool IsLoaded() const { return is_loaded_; }
     
 public:
     template <typename T>
-    static std::shared_ptr<ILevel> CreateLevel(const LevelDesc& _desc)
+    static std::unique_ptr<ILevel> CreateLevel(const LevelDesc& _desc)
     {
-        auto obj = make_shared<T>();
+        auto obj = make_unique<T>();
         obj->Initialize(_desc);
-        return obj;
+        return move(obj);
     }
+protected:
+    bool is_loaded_{false};
 };

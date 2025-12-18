@@ -1,15 +1,14 @@
 #pragma once
-#include "ILevel.h"
 
-class LevelTitle : public ILevel
+class LevelLoading : public ILevel
 {
 public:
-    ~LevelTitle() override = default;
-    struct LevelTitleDesc : public LevelDesc 
+    ~LevelLoading() override = default;
+    struct LevelLoadingDesc : public LevelDesc
     {
-        virtual ~LevelTitleDesc() = default;
+        unique_ptr<ILevel> next_level;
+        virtual ~LevelLoadingDesc() = default;
     };
-    
 public:
     void Initialize(const LevelDesc& _desc) override;
     void PriorityUpdate(const float _delta_time) override;
@@ -19,5 +18,8 @@ public:
     void LevelStart() override;
 
 private:
-    shared_ptr<class ManagerObject> object_manager_;
+    shared_ptr<ManagerLevel> level_manager_;
+    unique_ptr<ILevel> next_level_;
+    std::future<void> future_;
+    
 };
