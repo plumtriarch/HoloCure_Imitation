@@ -47,8 +47,6 @@ void GameObjectTile::Render(HDC _hDC)
         {
             int32_t tile_pos_x = 160 * (j-8) + 80;
             WrapTilePosition(tile_pos_x, scroll_x);
-            if (i == 0 && j == 0)
-                cout << tile_pos_y <<" "<<tile_pos_x<<endl;
             bmp_component_->Render(_hDC,tile_pos_x, tile_pos_y, i, j, 160);
         }
     }
