@@ -39,7 +39,6 @@ void GameObjectTile::WrapTilePosition(int32_t& _tile_pos, const int32_t _player_
 
 void GameObjectTile::Render(HDC _hDC)
 {
-    // auto [pos_x, pos_y] = sprite_component_->GetPosition();
     for (auto i = 0;i<16;i++)
     {
         int32_t tile_pos_y = 160 * (i-8) + 80;
