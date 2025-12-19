@@ -22,8 +22,10 @@
     <ClInclude Include="Default\HoloCure.h" />
     <ClInclude Include="Default\Resource.h" />
     <ClInclude Include="Public\Component\IComponent.h" />
+    <ClInclude Include="Public\Component\Sprite\ComponentBmp.h" />
     <ClInclude Include="Public\Component\Sprite\ComponentSprite.h" />
     <ClInclude Include="Public\GameObject\IGameObject.h" />
+    <ClInclude Include="Public\GameObject\Map\GameObjectTile.h" />
     <ClInclude Include="Public\GameObject\Player\GameObjectPlayer.h" />
     <ClInclude Include="Public\Global\GlobalFunction.h" />
     <ClInclude Include="Public\Global\GlobalVariables.h" />
@@ -32,6 +34,7 @@
     <ClInclude Include="Public\Level\LevelLoading.h" />
     <ClInclude Include="Public\Level\LevelTitle.h" />
     <ClInclude Include="Public\Manager\GameManager\ManagerGame.h" />
+    <ClInclude Include="Public\Manager\ImageManager\ManagerBmp.h" />
     <ClInclude Include="Public\Manager\ImageManager\ManagerImage.h" />
     <ClInclude Include="Public\Manager\IManager.h" />
     <ClInclude Include="Public\Manager\InputManager\ManagerInput.h" />
@@ -48,8 +51,10 @@
   <ItemGroup>
     <ClCompile Include="Default\HoloCure.cpp" />
     <ClCompile Include="Private\Component\IComponent.cpp" />
+    <ClCompile Include="Private\Component\Sprite\ComponentBmp.cpp" />
     <ClCompile Include="Private\Component\Sprite\ComponentSprite.cpp" />
     <ClCompile Include="Private\GameObject\IGameObject.cpp" />
+    <ClCompile Include="Private\GameObject\Map\GameObjectTile.cpp" />
     <ClCompile Include="Private\GameObject\Player\GameObjectPlayer.cpp" />
     <ClCompile Include="Private\Global\GlobalFunction.cpp" />
     <ClCompile Include="Private\Global\GlobalVariables.cpp" />
@@ -58,6 +63,7 @@
     <ClCompile Include="Private\Level\LevelLoading.cpp" />
     <ClCompile Include="Private\Level\LevelTitle.cpp" />
     <ClCompile Include="Private\Manager\GameManager\ManagerGame.cpp" />
+    <ClCompile Include="Private\Manager\ImageManager\ManagerBmp.cpp" />
     <ClCompile Include="Private\Manager\ImageManager\ManagerImage.cpp" />
     <ClCompile Include="Private\Manager\IManager.cpp" />
     <ClCompile Include="Private\Manager\InputManager\ManagerInput.cpp" />

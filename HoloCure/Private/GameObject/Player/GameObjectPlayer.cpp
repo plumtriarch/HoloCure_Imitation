@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "GameObject/Player/GameObjectPlayer.h"
 
-#include "Component/Sprite/ComponentSprite.h"
+
 
 void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
 {
@@ -37,6 +37,10 @@ void GameObjectPlayer::Update(const float _delta_time)
 
 void GameObjectPlayer::LateUpdate(const float _delta_time)
 {
+    auto [pos_x, pos_y] = sprite_component_->GetPosition();
+    scroll_y = pos_y ;
+    scroll_x = pos_x ;
+
     render_manager_->AddRenderGroup(RenderGroup::PLAYER, shared_from_this());
 }
 
