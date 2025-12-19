@@ -21,6 +21,12 @@
   <ItemGroup>
     <ClInclude Include="Default\HoloCure.h" />
     <ClInclude Include="Default\Resource.h" />
+    <ClInclude Include="Public\box2d\base.h" />
+    <ClInclude Include="Public\box2d\box2d.h" />
+    <ClInclude Include="Public\box2d\collision.h" />
+    <ClInclude Include="Public\box2d\id.h" />
+    <ClInclude Include="Public\box2d\math_functions.h" />
+    <ClInclude Include="Public\box2d\types.h" />
     <ClInclude Include="Public\Component\IComponent.h" />
     <ClInclude Include="Public\Component\Sprite\ComponentBmp.h" />
     <ClInclude Include="Public\Component\Sprite\ComponentSprite.h" />
@@ -88,6 +94,8 @@
     <ResourceCompile Include="Default\HoloCure.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Library Include="Libraries\box2d.lib" />
+    <Library Include="Libraries\box2dd.lib" />
     <Library Include="Libraries\vld.lib" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -157,7 +165,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)Libraries\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>vld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>vld.lib;%(AdditionalDependencies);box2dd.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -176,6 +184,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libraries\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -193,7 +203,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)Libraries\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>vld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>vld.lib;%(AdditionalDependencies);box2dd.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -212,6 +222,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libraries\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

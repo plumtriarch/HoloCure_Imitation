@@ -48,6 +48,9 @@ using namespace Gdiplus;
 #include "Global/GlobalVariables.h"
 #include "Global/GlobalFunction.h"
 
+#include "box2d/box2d.h"
+
+
 #include "Level/ILevel.h"
 #include "Manager/IManager.h"
 #include "GameObject/IGameObject.h"
