@@ -8,6 +8,11 @@ public:
     {
         virtual ~GameObjectPlayerDesc() = default;
     };
+    enum class State
+    {
+        IDLE,
+        RUN
+    };
 public:
     void Initialize(const GameObjectDesc& _desc) override;
     void PriorityUpdate(const float _delta_time) override;
@@ -19,4 +24,5 @@ private:
     shared_ptr<class ManagerInput> input_manager_;
     shared_ptr<class ManagerRender> render_manager_;
     float speed_{100.f};
+    GameObjectPlayer::State state_{State::IDLE};
 };

@@ -30,6 +30,7 @@
 #include <array>
 #include <queue>
 #include <stack>
+#include <cmath>
 
 #include <type_traits>
 #include <future>
