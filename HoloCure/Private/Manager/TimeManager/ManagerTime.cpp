@@ -13,7 +13,7 @@ void ManagerTime::Initialize(const ManagerDesc& _desc)
     SetTargetFps(desc.target_fps);
 }
 
-void ManagerTime::SetTargetFps(const uint16_t _fps)
+const float ManagerTime::GetDeltaTime()
 {
     QueryPerformanceCounter(&frame_time_);
     if (frame_time_.QuadPart - fix_time_.QuadPart >= cpu_tick_.QuadPart)
@@ -27,6 +27,10 @@ void ManagerTime::SetTargetFps(const uint16_t _fps)
     }
     delta_time_ = (frame_time_.QuadPart - last_time_.QuadPart) / static_cast<float>(cpu_tick_.QuadPart);
     last_time_ = frame_time_;
-    
+    return delta_time_ * time_factor_;
+}
+
+void ManagerTime::SetTargetFps(const uint16_t _fps)
+{
     target_ticks = cpu_tick_.QuadPart / _fps;
 }

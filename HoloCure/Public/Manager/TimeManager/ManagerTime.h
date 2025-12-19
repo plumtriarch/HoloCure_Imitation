@@ -13,7 +13,7 @@ public:
     
 public:
     void Initialize(const ManagerDesc& _desc) override;
-    const float GetDeltaTime() const { return delta_time_ * time_factor_; };
+    const float GetDeltaTime();
 private:
     void SetTargetFps(const uint16_t _fps);
     
