@@ -18,4 +18,5 @@ private:
     shared_ptr<class ComponentSprite> sprite_component_;
     shared_ptr<class ManagerInput> input_manager_;
     shared_ptr<class ManagerRender> render_manager_;
+    float speed_{100.f};
 };

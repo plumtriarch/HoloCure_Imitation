@@ -14,8 +14,9 @@ void ComponentSprite::Initialize(const ComponentDesc& _desc)
 
 void ComponentSprite::Render(HDC _hDC)
 {
-    image_manager_->DrawPng(_hDC, image_, position_x- (width_/2), position_y - (height_/2),
-                             width_, height_,
-                             src_left_top_x_, src_left_top_y_,
-                             width_, height_);
+    image_manager_->DrawPng(_hDC, image_, static_cast<int32_t>(position_x)- (width_/2), 
+        static_cast<int32_t>(position_y) - (height_/2),
+        width_, height_,
+        src_left_top_x_, src_left_top_y_,
+        width_, height_);
 }
