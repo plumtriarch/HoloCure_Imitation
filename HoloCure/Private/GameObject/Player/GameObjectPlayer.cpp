@@ -44,17 +44,14 @@ void GameObjectPlayer::PriorityUpdate(const float _delta_time)
         state_ = GameObjectPlayer::State::RUN;
         reversed_ = false;
     }
-    if (move_dir[0] != 0.f || move_dir[1] == 1.f)
+    if (move_dir[0] != 0.f || move_dir[1] != 0.f)
     {
         float length = sqrt(move_dir[0] * move_dir[0] + move_dir[1] * move_dir[1]);
         move_dir[0] /= length;
         move_dir[1] /= length;
     }
     
-    collider_component_->MoveDir(move_dir[0] * speed_/ _delta_time, move_dir[1] * speed_/ _delta_time);
-    
-    
-    
+    collider_component_->MoveDir(move_dir[0] * speed_ / _delta_time, move_dir[1] * speed_/  _delta_time);
 }
 
 void GameObjectPlayer::Update(const float _delta_time)
