@@ -16,6 +16,8 @@ void ComponentCollider::Initialize(const ComponentDesc& _desc)
     
     circleShapeDef = b2DefaultShapeDef();
     circleShapeDef.density = 1.0f;
+    circleShapeDef.filter.categoryBits = desc.category_bits;
+    circleShapeDef.filter.maskBits = desc.mask_bits;
 }
 
 void ComponentCollider::CreateCollider()

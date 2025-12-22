@@ -16,3 +16,11 @@ enum class RenderGroup : uint8_t
     PLAYER,
     COUNT
 };
+
+enum class CharacterType : int32_t
+{
+    PLAYER         = 1 << 0,
+    MONSTER        = 1 << 1,
+    PLAYER_BULLET  = 1 << 2,
+    MONSTER_BULLET = 1 << 3,
+};
