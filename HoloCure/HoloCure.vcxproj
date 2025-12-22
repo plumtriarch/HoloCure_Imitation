@@ -27,9 +27,11 @@
     <ClInclude Include="Public\box2d\id.h" />
     <ClInclude Include="Public\box2d\math_functions.h" />
     <ClInclude Include="Public\box2d\types.h" />
+    <ClInclude Include="Public\Component\Collider\ComponentCollider.h" />
     <ClInclude Include="Public\Component\IComponent.h" />
     <ClInclude Include="Public\Component\Sprite\ComponentBmp.h" />
     <ClInclude Include="Public\Component\Sprite\ComponentSprite.h" />
+    <ClInclude Include="Public\GameObject\Character\ICharacter.h" />
     <ClInclude Include="Public\GameObject\IGameObject.h" />
     <ClInclude Include="Public\GameObject\Map\GameObjectTile.h" />
     <ClInclude Include="Public\GameObject\Player\GameObjectPlayer.h" />
@@ -39,6 +41,7 @@
     <ClInclude Include="Public\Level\LevelGamePlay.h" />
     <ClInclude Include="Public\Level\LevelLoading.h" />
     <ClInclude Include="Public\Level\LevelTitle.h" />
+    <ClInclude Include="Public\Manager\ColliderManager\ManagerCollider.h" />
     <ClInclude Include="Public\Manager\GameManager\ManagerGame.h" />
     <ClInclude Include="Public\Manager\ImageManager\ManagerBmp.h" />
     <ClInclude Include="Public\Manager\ImageManager\ManagerImage.h" />
@@ -56,9 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Default\HoloCure.cpp" />
+    <ClCompile Include="Private\Component\Collider\ComponentCollider.cpp" />
     <ClCompile Include="Private\Component\IComponent.cpp" />
     <ClCompile Include="Private\Component\Sprite\ComponentBmp.cpp" />
     <ClCompile Include="Private\Component\Sprite\ComponentSprite.cpp" />
+    <ClCompile Include="Private\GameObject\Character\ICharacter.cpp" />
     <ClCompile Include="Private\GameObject\IGameObject.cpp" />
     <ClCompile Include="Private\GameObject\Map\GameObjectTile.cpp" />
     <ClCompile Include="Private\GameObject\Player\GameObjectPlayer.cpp" />
@@ -68,6 +73,7 @@
     <ClCompile Include="Private\Level\LevelGamePlay.cpp" />
     <ClCompile Include="Private\Level\LevelLoading.cpp" />
     <ClCompile Include="Private\Level\LevelTitle.cpp" />
+    <ClCompile Include="Private\Manager\ColliderManager\ManagerCollider.cpp" />
     <ClCompile Include="Private\Manager\GameManager\ManagerGame.cpp" />
     <ClCompile Include="Private\Manager\ImageManager\ManagerBmp.cpp" />
     <ClCompile Include="Private\Manager\ImageManager\ManagerImage.cpp" />

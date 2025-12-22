@@ -20,4 +20,5 @@ private:
     shared_ptr<class ManagerInput> input_manager_;
     shared_ptr<class ManagerObject> object_manager_;
     shared_ptr<class ManagerRender> render_manager_;
+    shared_ptr<class ManagerCollider> collider_manager_;
 };

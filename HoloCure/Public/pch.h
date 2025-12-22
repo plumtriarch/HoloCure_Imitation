@@ -55,6 +55,7 @@ using namespace Gdiplus;
 #include "Manager/IManager.h"
 #include "GameObject/IGameObject.h"
 #include "Component/IComponent.h"
+#include "GameObject/Character/ICharacter.h"
 
 // Manager
 #include "Manager/ServiceLocator/ServiceLocator.h"
@@ -68,10 +69,13 @@ using namespace Gdiplus;
 #include "Manager/ImageManager/ManagerImage.h"
 #include "Manager/ThreadManager/ManagerThread.h"
 #include "Manager/GameManager/ManagerGame.h"
+#include "Manager/ColliderManager/ManagerCollider.h"
 
 // Componenet
+#include "Component/Collider/ComponentCollider.h"
 #include "Component/Sprite/ComponentSprite.h"
 #include "Component/Sprite/ComponentBmp.h"
+
 
 
 

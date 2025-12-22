@@ -15,8 +15,9 @@ void ManagerObject::MovePoolToLive(const wstring& _tag)
     auto it = objects_pool_.find(_tag);
     if (it != objects_pool_.end() && !it->second.empty())
     {
+        it->second.front()->PoolToLive();
         objects_live_[_tag].emplace_back(move(it->second.front()));
-        // it->second.pop();
+
     }
 }
 

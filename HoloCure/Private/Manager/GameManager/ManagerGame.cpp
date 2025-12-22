@@ -8,7 +8,7 @@ void ManagerGame::Initialize(const ManagerDesc& _desc)
     level_manager_ = ServiceLocator::getInstance().get<ManagerLevel>();
     object_manager_ = ServiceLocator::getInstance().get<ManagerObject>();
     render_manager_ = ServiceLocator::getInstance().get<ManagerRender>();
-    
+    collider_manager_ = ServiceLocator::getInstance().get<ManagerCollider>();
     // Load Level
     level_manager_->LoadLevel(LevelGamePlay::CreateLevel<LevelGamePlay>(LevelGamePlay::LevelGamePlayDesc{}));
 }
@@ -19,6 +19,7 @@ void ManagerGame::Tick()
     input_manager_->UpdateInput();
     level_manager_->UpdateLevel(delta_time);
     object_manager_->UpdateObject(delta_time);
+    collider_manager_->ColliderSmulation(delta_time);
     render_manager_->Render();
 }
 

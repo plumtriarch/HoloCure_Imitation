@@ -38,6 +38,16 @@ void ComponentSprite::Render(HDC _hDC, const int32_t _state_index)
         static_cast<int32_t>(position_y) - (height_/2) - scroll_y+ g_window_size_y/2,
         width_, height_,
         width_ * animation_index_, height_ * _state_index,
+        width_, height_);
+}
+
+void ComponentSprite::Render(HDC _hDC, const int32_t _state_index, ComponentCollider* _collider)
+{
+    auto [x, y] = _collider->GetPosition();
+    image_manager_->DrawPng(_hDC, image_, x - (width_/2) - scroll_x + g_window_size_x/2, 
+        y - (height_/2) - scroll_y+ g_window_size_y/2,
+        width_, height_,
+        width_ * animation_index_, height_ * _state_index,
         width_, width_);
 }
 

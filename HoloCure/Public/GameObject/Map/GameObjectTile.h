@@ -15,7 +15,10 @@ public:
     void LateUpdate(const float _delta_time) override;
     void WrapTilePosition(int32_t& _tile_pos, const int32_t _player_pos);
     void Render(HDC _hDC) override;
-    
+public:
+    void PoolToLive() override {};
+    void LiveToPool() override {};
+
 private:
     shared_ptr<class ComponentBmp> bmp_component_;
     shared_ptr<class ManagerRender> render_manager_;

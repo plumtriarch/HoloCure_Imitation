@@ -14,6 +14,10 @@ public:
     virtual void Update(const float _delta_time) = 0;
     virtual void LateUpdate(const float _delta_time) = 0;
     virtual void Render(HDC _hDC) = 0;
+    
+public:
+    virtual void PoolToLive() = 0;
+    virtual void LiveToPool() = 0;
 public:
     template <typename T>
     static std::shared_ptr<IGameObject> CreateGameObject(const GameObjectDesc& _desc)

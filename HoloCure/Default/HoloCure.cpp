@@ -43,9 +43,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ServiceLocator::getInstance().registerService<ManagerLevel>(IManager::ManagerDesc{});
     ServiceLocator::getInstance().registerService<ManagerObject>(IManager::ManagerDesc{});
     ServiceLocator::getInstance().registerService<ManagerRender>(IManager::ManagerDesc{});
+    ServiceLocator::getInstance().registerService<ManagerCollider>(IManager::ManagerDesc{});
     ServiceLocator::getInstance().registerService<ManagerGame>(IManager::ManagerDesc{});
     ServiceLocator::getInstance().registerService<ManagerImage>(IManager::ManagerDesc{});
     ServiceLocator::getInstance().registerService<ManagerThread>(IManager::ManagerDesc{});
+    
     
     shared_ptr<ManagerGame> game_manager = ServiceLocator::getInstance().get<ManagerGame>();
     
