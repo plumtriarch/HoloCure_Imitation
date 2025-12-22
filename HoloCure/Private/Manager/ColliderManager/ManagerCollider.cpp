@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "Manager/ColliderManager/ManagerCollider.h"
 
+ManagerCollider::~ManagerCollider()
+{
+    b2DestroyWorld(world);
+}
+
 void ManagerCollider::Initialize(const ManagerDesc& _desc)
 {
     

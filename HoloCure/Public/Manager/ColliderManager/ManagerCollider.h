@@ -3,7 +3,7 @@
 class ManagerCollider : public IManager
 {
 public:
-    ~ManagerCollider() override = default;
+    ~ManagerCollider() override;
     struct ManagerColliderDesc : public ManagerDesc
     {
         virtual ~ManagerColliderDesc() = default;
