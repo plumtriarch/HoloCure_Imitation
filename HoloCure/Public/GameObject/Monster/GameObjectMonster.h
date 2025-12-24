@@ -21,7 +21,6 @@ private:
     shared_ptr<class ComponentSprite> sprite_component_;
     shared_ptr<class ComponentSprite> sprite_rev_component_;
     shared_ptr<class ComponentCollider> collider_component_;
-    shared_ptr<class ManagerInput> input_manager_;
     shared_ptr<class ManagerRender> render_manager_;
 
     int32_t monster_id_{};

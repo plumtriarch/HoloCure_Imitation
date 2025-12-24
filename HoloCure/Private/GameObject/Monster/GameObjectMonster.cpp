@@ -3,7 +3,6 @@
 
 void GameObjectMonster::Initialize(const GameObjectDesc& _desc)
 {
-    input_manager_ = ServiceLocator::getInstance().get<ManagerInput>();
     render_manager_ = ServiceLocator::getInstance().get<ManagerRender>();
     
     sprite_component_ = ComponentSprite::CreateComponent<ComponentSprite>
