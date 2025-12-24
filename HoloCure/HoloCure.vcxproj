@@ -34,6 +34,7 @@
     <ClInclude Include="Public\GameObject\Character\ICharacter.h" />
     <ClInclude Include="Public\GameObject\IGameObject.h" />
     <ClInclude Include="Public\GameObject\Map\GameObjectTile.h" />
+    <ClInclude Include="Public\GameObject\Monster\GameObjectMonster.h" />
     <ClInclude Include="Public\GameObject\Player\GameObjectPlayer.h" />
     <ClInclude Include="Public\Global\GlobalFunction.h" />
     <ClInclude Include="Public\Global\GlobalVariables.h" />
@@ -66,6 +67,7 @@
     <ClCompile Include="Private\GameObject\Character\ICharacter.cpp" />
     <ClCompile Include="Private\GameObject\IGameObject.cpp" />
     <ClCompile Include="Private\GameObject\Map\GameObjectTile.cpp" />
+    <ClCompile Include="Private\GameObject\Monster\GameObjectMonster.cpp" />
     <ClCompile Include="Private\GameObject\Player\GameObjectPlayer.cpp" />
     <ClCompile Include="Private\Global\GlobalFunction.cpp" />
     <ClCompile Include="Private\Global\GlobalVariables.cpp" />

@@ -14,7 +14,7 @@ void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
         (ComponentSprite::ComponentSpriteDesc{L"../Resources/Character/watson_rev.png", L"player_rev", 128, 128,6});
     collider_component_ = ComponentCollider::CreateComponent<ComponentCollider>
         (ComponentCollider::ComponentColliderDesc{1,static_cast<int32_t>(CharacterType::PLAYER)
-        , static_cast<int32_t>(CharacterType::MONSTER) | static_cast<int32_t>(CharacterType::MONSTER_BULLET)});
+        , 0, static_cast<int32_t>(CharacterType::MONSTER) | static_cast<int32_t>(CharacterType::MONSTER_BULLET), this});
 
     
 }
@@ -52,7 +52,7 @@ void GameObjectPlayer::PriorityUpdate(const float _delta_time)
         move_dir[1] /= length;
     }
     
-    collider_component_->MoveDir(move_dir[0] * speed_ / _delta_time, move_dir[1] * speed_/  _delta_time);
+    collider_component_->MoveDir(move_dir[0] * speed_, move_dir[1] * speed_);
 }
 
 void GameObjectPlayer::Update(const float _delta_time)
