@@ -5,6 +5,7 @@
 
 void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
 {
+    current_hp_ = 100;
     input_manager_ = ServiceLocator::getInstance().get<ManagerInput>();
     render_manager_ = ServiceLocator::getInstance().get<ManagerRender>();
     
@@ -14,7 +15,7 @@ void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
         (ComponentSprite::ComponentSpriteDesc{L"../Resources/Character/watson_rev.png", L"player_rev", 128, 128,6});
     collider_component_ = ComponentCollider::CreateComponent<ComponentCollider>
         (ComponentCollider::ComponentColliderDesc{1,static_cast<int32_t>(CharacterType::PLAYER)
-        , 0, static_cast<int32_t>(CharacterType::MONSTER) | static_cast<int32_t>(CharacterType::MONSTER_BULLET), this});
+        , 0, static_cast<int32_t>(CharacterType::MONSTER) | static_cast<int32_t>(CharacterType::MONSTER_BULLET), shared_from_this()});
 
     
 }
@@ -59,6 +60,9 @@ void GameObjectPlayer::Update(const float _delta_time)
 {
     sprite_component_->UpdateAnimation(_delta_time);
     sprite_rev_component_->UpdateAnimation(_delta_time);
+    invincible_time_ -= _delta_time;
+    if (invincible_time_ < 0.f)
+        collider_component_->SetSensor();
 }
 
 void GameObjectPlayer::LateUpdate(const float _delta_time)
@@ -81,9 +85,20 @@ void GameObjectPlayer::Render(HDC _hDC)
 void GameObjectPlayer::PoolToLive()
 {
     collider_component_->CreateCollider();
+    collider_component_->SetSensor();
 }
 
 void GameObjectPlayer::LiveToPool()
 {
     collider_component_->DestroyCollider();
+}
+
+void GameObjectPlayer::Attacked(int _damage)
+{
+    if (invincible_time_ > 0.f)
+        return;
+    ICharacter::Attacked(_damage);
+    invincible_time_ = 1.f;
+    collider_component_->UnsetSensor();
+    
 }

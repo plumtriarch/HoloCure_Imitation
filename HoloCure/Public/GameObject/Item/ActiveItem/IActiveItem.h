@@ -1,17 +1,16 @@
 #pragma once
 
-class GameObjectPlayer : public ICharacter
+class IActiveItem : public IItem
 {
 public:
-    ~GameObjectPlayer() override = default;
-    struct GameObjectPlayerDesc : public GameObjectDesc
+    ~IActiveItem() override = default;
+    struct ActiveItemDesc : public GameObjectDesc
     {
-        virtual ~GameObjectPlayerDesc() = default;
-    };
-    enum class State
-    {
-        IDLE,
-        RUN
+        ActiveItemDesc(const wstring& _path, const wstring& _tag, const float _radius) : path(_path), tag(_tag), radius(_radius) {}
+        virtual ~ActiveItemDesc() = default;
+        const wstring path;
+        const wstring tag;
+        const float radius;
     };
 public:
     void Initialize(const GameObjectDesc& _desc) override;
@@ -19,21 +18,13 @@ public:
     void Update(const float _delta_time) override;
     void LateUpdate(const float _delta_time) override;
     void Render(HDC _hDC) override;
-
-public:
     void PoolToLive() override;
     void LiveToPool() override;
-    void Attacked(int _damage) override;
-
-private:
+    
+protected:
     shared_ptr<class ComponentSprite> sprite_component_;
-    shared_ptr<class ComponentSprite> sprite_rev_component_;
     shared_ptr<class ComponentCollider> collider_component_;
-    shared_ptr<class ManagerInput> input_manager_;
     shared_ptr<class ManagerRender> render_manager_;
 
     float speed_{100.f};
-    GameObjectPlayer::State state_{State::IDLE};
-    bool reversed_{false};
-    float invincible_time_{0.f};
 };

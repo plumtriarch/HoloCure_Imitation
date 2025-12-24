@@ -13,6 +13,7 @@ enum class RenderGroup : uint8_t
     BACKGROUND = 0,
     MONSTER,
     BOSS,
+    PLAYER_ITEM,
     PLAYER,
     COUNT
 };

@@ -13,7 +13,8 @@ public:
     b2BodyId CreateBody(b2BodyDef& _body_def);
     void DestroyBody(b2BodyId _body_id);
     void ColliderSmulation(const float _delta_time);
+    void ProcessContacts();
     
 private:
-    b2WorldId world{};
+    b2WorldId world_{};
 };

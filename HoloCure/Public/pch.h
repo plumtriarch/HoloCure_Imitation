@@ -54,6 +54,8 @@ using namespace Gdiplus;
 #include "Level/ILevel.h"
 #include "Manager/IManager.h"
 #include "GameObject/IGameObject.h"
+#include "GameObject/Item/IItem.h"
+#include "GameObject/Item/ActiveItem/IActiveItem.h"
 #include "Component/IComponent.h"
 #include "GameObject/Character/ICharacter.h"
 

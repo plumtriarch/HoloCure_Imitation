@@ -11,7 +11,7 @@ void GameObjectMonster::Initialize(const GameObjectDesc& _desc)
         (ComponentSprite::ComponentSpriteDesc{L"../Resources/Character/monster_rev.png", L"monster_rev", 128, 128,3});
     collider_component_ = ComponentCollider::CreateComponent<ComponentCollider>
         (ComponentCollider::ComponentColliderDesc{1,static_cast<int32_t>(CharacterType::MONSTER)
-        , static_cast<int32_t>(CharacterType::MONSTER), static_cast<int32_t>(CharacterType::PLAYER_BULLET), this});
+        , static_cast<int32_t>(CharacterType::MONSTER), static_cast<int32_t>(CharacterType::PLAYER_BULLET) | static_cast<int32_t>(CharacterType::PLAYER)  , shared_from_this()});
 }
 
 void GameObjectMonster::PriorityUpdate(const float _delta_time)
@@ -56,6 +56,7 @@ void GameObjectMonster::Render(HDC _hDC)
 void GameObjectMonster::PoolToLive()
 {
     collider_component_->CreateCollider();
+    collider_component_->SetSensor();
 }
 
 void GameObjectMonster::LiveToPool()

@@ -7,14 +7,14 @@ public:
     struct ComponentColliderDesc : public ComponentDesc
     {
         ComponentColliderDesc(const float _radius, const int32_t _category_bits, const int32_t _mask_bits,
-            const int32_t _sensor_mask_bits, class ICharacter* _character) : radius(_radius), category_bits(_category_bits), mask_bits(_mask_bits),
-            sensor_mask_bits(_sensor_mask_bits) {}
+            const int32_t _sensor_mask_bits, class shared_ptr<IGameObject> _character) : radius(_radius), category_bits(_category_bits), mask_bits(_mask_bits),
+            sensor_mask_bits(_sensor_mask_bits), character(_character) {}
         virtual ~ComponentColliderDesc() = default;
         float radius{1.f};
         int32_t category_bits{0};
         int32_t mask_bits{0};
         int32_t sensor_mask_bits{0};
-        class ICharacter* character{nullptr};
+        class shared_ptr<IGameObject> character{nullptr};
     };
 public:
     void Initialize(const ComponentDesc& _desc) override;
@@ -39,4 +39,5 @@ private:
     b2ShapeId sensor_circle_shape_id_{};
     
     int32_t sensor_mask_bits_{};
+    bool is_sensor_active_{false};
 };
