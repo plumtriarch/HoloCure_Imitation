@@ -21,15 +21,14 @@ void ComponentCollider::Initialize(const ComponentDesc& _desc)
     circle_shape_def_.density = 1.0f;
     circle_shape_def_.filter.categoryBits = desc.category_bits;
     circle_shape_def_.filter.maskBits = desc.mask_bits;
+
     
     sensor_circle_shape_def_ = b2DefaultShapeDef();
     sensor_circle_shape_def_.isSensor = true;
     sensor_circle_shape_def_.filter.categoryBits = desc.category_bits;
-    sensor_circle_shape_def_.filter.maskBits = 0;
+    sensor_circle_shape_def_.filter.maskBits = desc.sensor_mask_bits;
     sensor_circle_shape_def_.userData = reinterpret_cast<void*>(desc.character.get());
-    sensor_circle_shape_def_.enableSensorEvents = true;
-    
-    sensor_mask_bits_ = desc.sensor_mask_bits;
+    // sensor_circle_shape_def_.enableSensorEvents = true;
 }
 
 void ComponentCollider::CreateCollider()
@@ -67,9 +66,7 @@ void ComponentCollider::SetSensor()
 {
     if (is_sensor_active_ == false)
     {
-        b2Filter filter = b2Shape_GetFilter(sensor_circle_shape_id_);
-        filter.maskBits = sensor_mask_bits_;
-        b2Shape_SetFilter(sensor_circle_shape_id_, filter);
+        b2Shape_EnableSensorEvents(sensor_circle_shape_id_, true);
         is_sensor_active_ = true;
     }
 }
@@ -78,9 +75,7 @@ void ComponentCollider::UnsetSensor()
 {
     if (is_sensor_active_ == true)
     {
-        b2Filter filter = b2Shape_GetFilter(sensor_circle_shape_id_);
-        filter.maskBits = 0;
-        b2Shape_SetFilter(sensor_circle_shape_id_, filter); 
+        b2Shape_EnableSensorEvents(sensor_circle_shape_id_, false);
         is_sensor_active_ = false;
     }
     

@@ -38,6 +38,6 @@ private:
     b2ShapeId circle_shape_id_{};
     b2ShapeId sensor_circle_shape_id_{};
     
-    int32_t sensor_mask_bits_{};
+    // int32_t sensor_mask_bits_{};
     bool is_sensor_active_{false};
 };
