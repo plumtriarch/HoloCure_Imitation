@@ -3,7 +3,7 @@
 class GameObjectMonster : public ICharacter
 {
 public:
-    ~GameObjectMonster() override = default;
+    ~GameObjectMonster() override;
     struct GameObjectMonsterDesc : public GameObjectDesc
     {
         virtual ~GameObjectMonsterDesc() = default;

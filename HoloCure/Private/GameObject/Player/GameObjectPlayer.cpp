@@ -2,6 +2,10 @@
 #include "GameObject/Player/GameObjectPlayer.h"
 
 
+GameObjectPlayer::~GameObjectPlayer()
+{
+    collider_component_->DestroyCollider();
+}
 
 void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
 {
@@ -84,13 +88,14 @@ void GameObjectPlayer::Render(HDC _hDC)
 
 void GameObjectPlayer::PoolToLive()
 {
-    collider_component_->CreateCollider();
+    collider_component_->SetContact();
     collider_component_->SetSensor();
 }
 
 void GameObjectPlayer::LiveToPool()
 {
-    collider_component_->DestroyCollider();
+    collider_component_->UnSetContact();
+    collider_component_->UnSetSensor();
 }
 
 void GameObjectPlayer::Attacked(int _damage)
@@ -99,6 +104,6 @@ void GameObjectPlayer::Attacked(int _damage)
         return;
     ICharacter::Attacked(_damage);
     invincible_time_ = 1.f;
-    collider_component_->UnsetSensor();
+    collider_component_->UnSetSensor();
     
 }

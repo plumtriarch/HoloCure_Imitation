@@ -21,6 +21,7 @@ void ComponentCollider::Initialize(const ComponentDesc& _desc)
     circle_shape_def_.density = 1.0f;
     circle_shape_def_.filter.categoryBits = desc.category_bits;
     circle_shape_def_.filter.maskBits = desc.mask_bits;
+    circle_shape_def_.enableContactEvents = false;
 
     
     sensor_circle_shape_def_ = b2DefaultShapeDef();
@@ -28,17 +29,11 @@ void ComponentCollider::Initialize(const ComponentDesc& _desc)
     sensor_circle_shape_def_.filter.categoryBits = desc.category_bits;
     sensor_circle_shape_def_.filter.maskBits = desc.sensor_mask_bits;
     sensor_circle_shape_def_.userData = reinterpret_cast<void*>(desc.character.get());
-    // sensor_circle_shape_def_.enableSensorEvents = true;
-}
-
-void ComponentCollider::CreateCollider()
-{
-    if (!b2Body_IsValid(circle_body_))
-    {
-        circle_body_ = collider_manager_->CreateBody(body_def_);
-        circle_shape_id_ = b2CreateCircleShape(circle_body_, &circle_shape_def_, &circle_);
-        sensor_circle_shape_id_ = b2CreateCircleShape(circle_body_, &sensor_circle_shape_def_, &sensor_circle_);
-    }
+    sensor_circle_shape_def_.enableSensorEvents = false;
+    
+    circle_body_ = collider_manager_->CreateBody(body_def_);
+    circle_shape_id_ = b2CreateCircleShape(circle_body_, &circle_shape_def_, &circle_);
+    sensor_circle_shape_id_ = b2CreateCircleShape(circle_body_, &sensor_circle_shape_def_, &sensor_circle_);
 }
 
 void ComponentCollider::DestroyCollider()
@@ -62,6 +57,16 @@ pair<float, float> ComponentCollider::GetPosition()
     return {position.x, position.y};
 }
 
+void ComponentCollider::SetContact()
+{
+    b2Shape_EnableContactEvents(circle_shape_id_, true);
+}
+
+void ComponentCollider::UnSetContact()
+{
+    b2Shape_EnableContactEvents(circle_shape_id_, false);
+}
+
 void ComponentCollider::SetSensor()
 {
     if (is_sensor_active_ == false)
@@ -71,7 +76,7 @@ void ComponentCollider::SetSensor()
     }
 }
 
-void ComponentCollider::UnsetSensor()
+void ComponentCollider::UnSetSensor()
 {
     if (is_sensor_active_ == true)
     {

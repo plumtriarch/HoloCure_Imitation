@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "GameObject/Monster/GameObjectMonster.h"
 
+GameObjectMonster::~GameObjectMonster()
+{
+    collider_component_->DestroyCollider();
+}
+
 void GameObjectMonster::Initialize(const GameObjectDesc& _desc)
 {
     render_manager_ = ServiceLocator::getInstance().get<ManagerRender>();
@@ -10,7 +15,7 @@ void GameObjectMonster::Initialize(const GameObjectDesc& _desc)
     sprite_rev_component_ = ComponentSprite::CreateComponent<ComponentSprite>
         (ComponentSprite::ComponentSpriteDesc{L"../Resources/Character/monster_rev.png", L"monster_rev", 128, 128,3});
     collider_component_ = ComponentCollider::CreateComponent<ComponentCollider>
-        (ComponentCollider::ComponentColliderDesc{1,static_cast<int32_t>(CharacterType::MONSTER)
+        (ComponentCollider::ComponentColliderDesc{10,static_cast<int32_t>(CharacterType::MONSTER)
         , static_cast<int32_t>(CharacterType::MONSTER), static_cast<int32_t>(CharacterType::PLAYER_BULLET) | static_cast<int32_t>(CharacterType::PLAYER)  , shared_from_this()});
 }
 
@@ -18,7 +23,7 @@ void GameObjectMonster::PriorityUpdate(const float _delta_time)
 {
     array<float, 2> move_dir = {0.f,0.f};
     auto [pos_x, pos_y] = collider_component_->GetPosition();
-    move_dir = {scroll_x - pos_x, scroll_y - pos_y};
+    move_dir = {static_cast<float>(scroll_x) - pos_x, static_cast<float>(scroll_y) - pos_y};
     
     if (move_dir[0] != 0.f || move_dir[1] != 0.f)
     {
@@ -55,11 +60,12 @@ void GameObjectMonster::Render(HDC _hDC)
 
 void GameObjectMonster::PoolToLive()
 {
-    collider_component_->CreateCollider();
+    collider_component_->SetContact();
     collider_component_->SetSensor();
 }
 
 void GameObjectMonster::LiveToPool()
 {
-    collider_component_->DestroyCollider();
+    collider_component_->UnSetContact();
+    collider_component_->UnSetSensor();
 }

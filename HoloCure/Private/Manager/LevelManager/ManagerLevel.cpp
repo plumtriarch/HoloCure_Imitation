@@ -15,6 +15,7 @@ void ManagerLevel::UpdateLevel(const float _delta_time)
 void ManagerLevel::SetLevel(unique_ptr<ILevel> _level)
 {
     current_level_ = move(_level);
+    is_loading_level_ = false;
 }
 
 void ManagerLevel::LoadLevel(unique_ptr<ILevel> _level)
@@ -22,4 +23,5 @@ void ManagerLevel::LoadLevel(unique_ptr<ILevel> _level)
     LevelLoading::LevelLoadingDesc loading_desc;
     loading_desc.next_level = move(_level);
     SetLevel(ILevel::CreateLevel<LevelLoading>(loading_desc));
+    is_loading_level_ = true;
 }

@@ -14,6 +14,8 @@ public:
     void UpdateLevel(const float _delta_time);
     void SetLevel(unique_ptr<ILevel> _level);
     void LoadLevel(unique_ptr<ILevel> _level);
+    bool IsLoadingLevel() { return is_loading_level_;}
 private:
     unique_ptr<ILevel> current_level_;
+    bool is_loading_level_{false};
 };

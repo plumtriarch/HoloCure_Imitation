@@ -3,7 +3,7 @@
 class GameObjectPlayer : public ICharacter
 {
 public:
-    ~GameObjectPlayer() override = default;
+    ~GameObjectPlayer() override;
     struct GameObjectPlayerDesc : public GameObjectDesc
     {
         virtual ~GameObjectPlayerDesc() = default;

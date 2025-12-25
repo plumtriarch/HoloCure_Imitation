@@ -62,13 +62,6 @@ void ManagerCollider::ProcessContacts()
             player->Attacked(monster->GetAttackDamage());
 
         }
-
-        
-        // Monster <-> PLAYER_ITEM
-        // 예: 사용자 데이터를 가져와 로직 처리
-        // MyActor* actorA = (MyActor*)b2Shape_GetUserData(shapeA);
-        // MyActor* actorB = (MyActor*)b2Shape_GetUserData(shapeB);
-        // MyCustomOnBeginContact(events.beginEvents[i]);
     }
     
 }

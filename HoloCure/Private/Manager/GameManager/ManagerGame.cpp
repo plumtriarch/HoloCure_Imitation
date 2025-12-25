@@ -19,8 +19,12 @@ void ManagerGame::Tick()
     input_manager_->UpdateInput();
     level_manager_->UpdateLevel(delta_time);
     object_manager_->UpdateObject(delta_time);
-    collider_manager_->ColliderSmulation(delta_time);
-    collider_manager_->ProcessContacts();
+    if (level_manager_->IsLoadingLevel() == false)
+    {
+        collider_manager_->ColliderSmulation(delta_time);
+        collider_manager_->ProcessContacts();
+    }
+    
     render_manager_->Render();
 }
 

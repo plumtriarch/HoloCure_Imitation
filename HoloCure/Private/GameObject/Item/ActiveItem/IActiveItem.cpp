@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "GameObject/Item/ActiveItem/IActiveItem.h"
 
+IActiveItem::~IActiveItem()
+{
+    collider_component_->DestroyCollider();
+}
+
 void IActiveItem::Initialize(const GameObjectDesc& _desc)
 {
     render_manager_ = ServiceLocator::getInstance().get<ManagerRender>();
@@ -32,11 +37,11 @@ void IActiveItem::Render(HDC _hDC)
 
 void IActiveItem::PoolToLive()
 {
-    collider_component_->CreateCollider();
+    // collider_component_->CreateCollider();
     collider_component_->SetSensor();
 }
 
 void IActiveItem::LiveToPool()
 {
-    collider_component_->DestroyCollider();
+    collider_component_->UnSetSensor();
 }

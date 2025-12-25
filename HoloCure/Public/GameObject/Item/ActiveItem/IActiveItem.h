@@ -3,7 +3,7 @@
 class IActiveItem : public IItem
 {
 public:
-    ~IActiveItem() override = default;
+    ~IActiveItem() override;
     struct ActiveItemDesc : public GameObjectDesc
     {
         ActiveItemDesc(const wstring& _path, const wstring& _tag, const float _radius) : path(_path), tag(_tag), radius(_radius) {}
