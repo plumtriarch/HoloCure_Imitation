@@ -36,6 +36,7 @@
     <ClInclude Include="Public\GameObject\Item\ActiveItem\IActiveItem.h" />
     <ClInclude Include="Public\GameObject\Item\ActiveItem\ItemBullet.h" />
     <ClInclude Include="Public\GameObject\Item\IItem.h" />
+    <ClInclude Include="Public\GameObject\Item\ItemSpawner.h" />
     <ClInclude Include="Public\GameObject\Map\GameObjectTile.h" />
     <ClInclude Include="Public\GameObject\Monster\GameObjectMonster.h" />
     <ClInclude Include="Public\GameObject\Player\GameObjectPlayer.h" />
@@ -72,6 +73,7 @@
     <ClCompile Include="Private\GameObject\Item\ActiveItem\IActiveItem.cpp" />
     <ClCompile Include="Private\GameObject\Item\ActiveItem\ItemBullet.cpp" />
     <ClCompile Include="Private\GameObject\Item\IItem.cpp" />
+    <ClCompile Include="Private\GameObject\Item\ItemSpawner.cpp" />
     <ClCompile Include="Private\GameObject\Map\GameObjectTile.cpp" />
     <ClCompile Include="Private\GameObject\Monster\GameObjectMonster.cpp" />
     <ClCompile Include="Private\GameObject\Player\GameObjectPlayer.cpp" />

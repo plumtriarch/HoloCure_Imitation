@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "GameObject/Player/GameObjectPlayer.h"
 
+#include "GameObject/Item/ItemSpawner.h"
+
 
 GameObjectPlayer::~GameObjectPlayer()
 {
@@ -21,7 +23,8 @@ void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
         (ComponentCollider::ComponentColliderDesc{1,static_cast<int32_t>(CharacterType::PLAYER)
         , 0, static_cast<int32_t>(CharacterType::MONSTER) | static_cast<int32_t>(CharacterType::MONSTER_BULLET), shared_from_this()});
 
-    
+    item_spawner_ = ItemSpawner::CreateGameObject<ItemSpawner>({});
+
 }
 
 void GameObjectPlayer::PriorityUpdate(const float _delta_time)
@@ -67,6 +70,7 @@ void GameObjectPlayer::Update(const float _delta_time)
     invincible_time_ -= _delta_time;
     if (invincible_time_ < 0.f)
         collider_component_->SetSensor();
+    item_spawner_->Update(_delta_time);
 }
 
 void GameObjectPlayer::LateUpdate(const float _delta_time)

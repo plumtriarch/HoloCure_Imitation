@@ -146,6 +146,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
+    case WM_MOUSEMOVE:
+        POINT pt;
+        GetCursorPos(&pt);
+        ScreenToClient(hWnd, &pt);
+        mouse_x = pt.x; mouse_y = pt.y;
+        break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }

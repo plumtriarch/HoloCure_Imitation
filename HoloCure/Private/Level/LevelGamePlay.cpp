@@ -27,11 +27,13 @@ void LevelGamePlay::LoadingResources()
         (GameObjectPlayer::GameObjectPlayerDesc{}));
     for (int i =0;i<100;i++)
         object_manager_->AddGameObjectToPool(L"monster", GameObjectMonster::CreateGameObject<GameObjectMonster>
-        (GameObjectMonster::GameObjectMonsterDesc{}));
+            (GameObjectMonster::GameObjectMonsterDesc{}));
+    
     object_manager_->AddGameObjectToPool(L"map", GameObjectTile::CreateGameObject<GameObjectTile>
         (GameObjectTile::GameObjectTileDesc{}));
-    // object_manager_->AddGameObjectToPool(L"bullet", ItemBullet::CreateGameObject<ItemBullet>
-    //     (ItemBullet::ItemBulletDesc{}));
+    for (int i =0;i<20;i++)
+        object_manager_->AddGameObjectToPool(L"bullet", ItemBullet::CreateGameObject<ItemBullet>
+            (ItemBullet::ItemBulletDesc{}));
     is_loaded_ = true;
 }
 
@@ -39,7 +41,7 @@ void LevelGamePlay::LevelStart()
 {
     shared_ptr<ManagerObject> object_manager_ = ServiceLocator::getInstance().get<ManagerObject>(); 
     object_manager_->MovePoolToLive(L"player");
-    for (int i =0;i<5;i++)
+    for (int i =0;i<1;i++)
         object_manager_->MovePoolToLive(L"monster");
     object_manager_->MovePoolToLive(L"map");
     // object_manager_->MovePoolToLive(L"bullet");

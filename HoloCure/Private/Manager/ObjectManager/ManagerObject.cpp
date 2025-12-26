@@ -19,6 +19,31 @@ void ManagerObject::MovePoolToLive(const wstring& _tag)
         objects_live_[_tag].emplace_back(move(it->second.front()));
         it->second.pop();
     }
+    else
+    {
+        cout<<1<<endl;
+    }
+}
+
+void ManagerObject::ProcessDeadObject()
+{
+    for (auto &li : objects_live_)
+    {
+        auto it = li.second.begin();
+        while (it !=  li.second.end())
+        {
+            if ((*it)->IsDead())
+            {
+                (*it)->LiveToPool();
+                objects_pool_[li.first].emplace(move(*it));
+                it = li.second.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+    }
 }
 
 void ManagerObject::UpdateObject(const float _delta_time)

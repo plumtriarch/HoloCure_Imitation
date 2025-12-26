@@ -24,6 +24,6 @@ private:
     shared_ptr<class ManagerRender> render_manager_;
 
     int32_t monster_id_{};
-    float speed_{50.f};
+    float speed_{30.f};
     bool reversed_{false};
 };

@@ -31,6 +31,7 @@ private:
     shared_ptr<class ComponentCollider> collider_component_;
     shared_ptr<class ManagerInput> input_manager_;
     shared_ptr<class ManagerRender> render_manager_;
+    shared_ptr<class ItemSpawner> item_spawner_;
 
     float speed_{100.f};
     GameObjectPlayer::State state_{State::IDLE};

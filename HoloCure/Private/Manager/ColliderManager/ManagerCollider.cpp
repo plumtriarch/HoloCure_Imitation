@@ -60,7 +60,25 @@ void ManagerCollider::ProcessContacts()
                 player = reinterpret_cast<ICharacter*>(b2Shape_GetUserData(shapeB));
             }
             player->Attacked(monster->GetAttackDamage());
-
+        }
+        else if ((b2Shape_GetFilter(event->sensorShapeId).categoryBits == static_cast<int32_t>(CharacterType::MONSTER) &&
+            b2Shape_GetFilter(event->visitorShapeId).categoryBits == static_cast<int32_t>(CharacterType::PLAYER_BULLET)) ||
+            (b2Shape_GetFilter(event->sensorShapeId).categoryBits == static_cast<int32_t>(CharacterType::PLAYER_BULLET) &&
+            b2Shape_GetFilter(event->visitorShapeId).categoryBits == static_cast<int32_t>(CharacterType::MONSTER)) )
+        {
+            ICharacter* monster = nullptr;
+            IActiveItem* item = nullptr;
+            if (b2Shape_GetFilter(event->sensorShapeId).categoryBits == static_cast<int32_t>(CharacterType::MONSTER))
+            {
+                monster = reinterpret_cast<ICharacter*>(b2Shape_GetUserData(shapeA));
+                item = reinterpret_cast<IActiveItem*>(b2Shape_GetUserData(shapeB));
+            }
+            else
+            {
+                item = reinterpret_cast<IActiveItem*>(b2Shape_GetUserData(shapeA));
+                monster = reinterpret_cast<ICharacter*>(b2Shape_GetUserData(shapeB));
+            }
+            monster->Attacked(item->GetAttackDamage());
         }
     }
     

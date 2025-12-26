@@ -51,6 +51,14 @@ void ComponentSprite::Render(HDC _hDC, const int32_t _state_index, ComponentColl
         width_, width_);
 }
 
+void ComponentSprite::RenderRotate(HDC _hDC, const float _rotated, ComponentCollider* _collider)
+{
+    auto [x, y] = _collider->GetPosition();
+    image_manager_->DrawPngRotate(_hDC, image_, x - (width_/2) - scroll_x + g_window_size_x/2, 
+        y - (height_/2) - scroll_y+ g_window_size_y/2,
+        width_, height_,_rotated);
+}
+
 void ComponentSprite::UpdateAnimation(const float _delta_time)
 {
     sum_time_ += _delta_time;

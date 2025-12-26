@@ -17,6 +17,7 @@ void GameObjectMonster::Initialize(const GameObjectDesc& _desc)
     collider_component_ = ComponentCollider::CreateComponent<ComponentCollider>
         (ComponentCollider::ComponentColliderDesc{10,static_cast<int32_t>(CharacterType::MONSTER)
         , static_cast<int32_t>(CharacterType::MONSTER), static_cast<int32_t>(CharacterType::PLAYER_BULLET) | static_cast<int32_t>(CharacterType::PLAYER)  , shared_from_this()});
+    current_hp_ = 50;
 }
 
 void GameObjectMonster::PriorityUpdate(const float _delta_time)
@@ -43,6 +44,8 @@ void GameObjectMonster::Update(const float _delta_time)
 {
     sprite_component_->UpdateAnimation(_delta_time);
     sprite_rev_component_->UpdateAnimation(_delta_time);
+    if (current_hp_ < 0)
+        is_dead_ = true;
 }
 
 void GameObjectMonster::LateUpdate(const float _delta_time)

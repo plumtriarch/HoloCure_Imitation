@@ -63,3 +63,22 @@ void ManagerImage::DrawPng(HDC _hDC, Gdiplus::Image* _image, const int _dest_x, 
         graphics.DrawImage(_image, destRect, srcRect.X, srcRect.Y, srcRect.Width, srcRect.Height, Gdiplus::UnitPixel);
     }
 }
+
+void ManagerImage::DrawPngRotate(HDC _hDC, Gdiplus::Image* _image, const int _dest_x, const int _dest_y,
+    const int _dest_width, const int _dest_height, float _angle)
+{
+    if (_image) {
+        Gdiplus::Graphics graphics(_hDC);
+        graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQualityBicubic);
+        
+        graphics.TranslateTransform(static_cast<REAL>(_dest_x) + static_cast<REAL>(_dest_width) / 2.0f, static_cast<REAL>(_dest_y)
+            + static_cast<REAL>(_dest_height) / 2.0f);
+        graphics.RotateTransform(_angle);
+        graphics.TranslateTransform(-(static_cast<REAL>(_dest_x) + static_cast<REAL>(_dest_width) / 2.0f), 
+            -(static_cast<REAL>(_dest_y) + static_cast<REAL>(_dest_height) / 2.0f));
+        
+        graphics.DrawImage(_image, _dest_x, _dest_y, _dest_width, _dest_height);
+        
+        graphics.ResetTransform();
+    }
+}

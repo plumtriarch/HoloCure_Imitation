@@ -32,16 +32,22 @@ void IActiveItem::LateUpdate(const float _delta_time)
 
 void IActiveItem::Render(HDC _hDC)
 {
-    sprite_component_->Render(_hDC, 0,collider_component_.get());
+    sprite_component_->RenderRotate(_hDC, rotated_,collider_component_.get());
 }
 
 void IActiveItem::PoolToLive()
 {
-    // collider_component_->CreateCollider();
-    collider_component_->SetSensor();
+    is_dead_ = false;
+    cur_life_time_ = life_time_;
 }
 
 void IActiveItem::LiveToPool()
 {
-    collider_component_->UnSetSensor();
+
+}
+
+void IActiveItem::SetPosition(const float _x, const float _y)
+{
+    IItem::SetPosition(_x, _y);
+    collider_component_->SetPosition(_x,_y);
 }

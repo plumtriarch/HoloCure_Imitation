@@ -20,7 +20,7 @@ public:
     void Render(HDC _hDC) override;
     void PoolToLive() override;
     void LiveToPool() override;
-    
+    void SetPosition(const float _x, const float _y) override;
 protected:
     shared_ptr<class ComponentSprite> sprite_component_;
     shared_ptr<class ComponentCollider> collider_component_;

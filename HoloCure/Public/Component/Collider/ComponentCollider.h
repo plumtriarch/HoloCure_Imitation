@@ -20,11 +20,13 @@ public:
     void Initialize(const ComponentDesc& _desc) override;
     void DestroyCollider();
     void MoveDir(const float _x, const float _y);
+    void SetPosition(const float _x, const float _y);
     pair<float, float> GetPosition();
     void SetContact();
     void UnSetContact();
     void SetSensor();
     void UnSetSensor();
+    
 private:
     shared_ptr<class ManagerCollider> collider_manager_;
     b2BodyId circle_body_{};

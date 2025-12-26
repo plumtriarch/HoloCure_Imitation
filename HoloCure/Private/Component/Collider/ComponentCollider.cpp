@@ -51,6 +51,12 @@ void ComponentCollider::MoveDir(const float _x, const float _y)
     b2Body_SetLinearVelocity(circle_body_, velocity);
 }
 
+void ComponentCollider::SetPosition(const float _x, const float _y)
+{
+    b2Rot rotation = b2Body_GetRotation(circle_body_);
+    b2Body_SetTransform(circle_body_, b2Vec2{_x, _y}, rotation);
+}
+
 pair<float, float> ComponentCollider::GetPosition()
 {
     b2Vec2 position = b2Body_GetPosition(circle_body_);

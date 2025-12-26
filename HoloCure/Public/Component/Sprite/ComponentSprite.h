@@ -20,6 +20,7 @@ public:
     void Render(HDC _hDC, const int32_t _pos_x, const int32_t _pos_y, const int32_t _index_y, const int32_t _index_x, const int32_t _size);
     void Render(HDC _hDC, const int32_t _state_index);
     void Render(HDC _hDC, const int32_t _state_index, ComponentCollider* _collider);
+    void RenderRotate(HDC _hDC, const float _rotated, ComponentCollider* _collider);
     void UpdateAnimation(const float _delta_time);
     // void MovePosition(const float _x, const float _y) { position_x += _x; position_y += _y; }
     pair<int32_t, int32_t> GetPosition() {return {static_cast<int32_t>(position_x), static_cast<int32_t>(position_y)}; }

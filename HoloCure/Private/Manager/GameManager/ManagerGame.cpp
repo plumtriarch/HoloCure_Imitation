@@ -18,13 +18,14 @@ void ManagerGame::Tick()
     const float delta_time = time_manager_->GetDeltaTime();
     input_manager_->UpdateInput();
     level_manager_->UpdateLevel(delta_time);
-    object_manager_->UpdateObject(delta_time);
     if (level_manager_->IsLoadingLevel() == false)
     {
+        object_manager_->ProcessDeadObject();
+        object_manager_->UpdateObject(delta_time);
         collider_manager_->ColliderSmulation(delta_time);
         collider_manager_->ProcessContacts();
+
     }
-    
     render_manager_->Render();
 }
 

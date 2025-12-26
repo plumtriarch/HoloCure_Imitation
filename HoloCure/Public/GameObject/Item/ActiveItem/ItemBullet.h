@@ -16,5 +16,4 @@ public:
     void Render(HDC _hDC) override;
     void PoolToLive() override;
     void LiveToPool() override;
-    
 };

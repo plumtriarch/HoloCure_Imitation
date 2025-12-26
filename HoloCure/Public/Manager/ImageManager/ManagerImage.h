@@ -24,6 +24,9 @@ public:
         const int _dest_width, const int _dest_height, 
         const int _src_x, const int _src_y, 
         const int _src_width, const int _src_height);
+    void DrawPngRotate(HDC _hDC, Gdiplus::Image* _image, const int _dest_x, const int _dest_y, 
+        const int _dest_width, const int _dest_height, float _angle);
+    
 private:
     unordered_map<wstring, unique_ptr<Gdiplus::Image>> png_map_;
 
