@@ -6,6 +6,11 @@ void ItemSpawner::Initialize(const GameObjectDesc& _desc)
     object_manager_ = ServiceLocator::getInstance().get<ManagerObject>();
 }
 
+void ItemSpawner::PriorityUpdate(const float _delta_time)
+{
+    IGameObject::PriorityUpdate(_delta_time);
+}
+
 void ItemSpawner::Update(const float _delta_time)
 {
     for (auto &el : item_spawners_)
@@ -18,6 +23,11 @@ void ItemSpawner::Update(const float _delta_time)
             object_manager_->MovePoolToLive(el.first);
         }
     }
+}
+
+void ItemSpawner::PoolToLive()
+{
+    IGameObject::PoolToLive();
 }
 
 void ItemSpawner::AddItemSpawner(const wstring& _item_tag, float _spawn_delay)

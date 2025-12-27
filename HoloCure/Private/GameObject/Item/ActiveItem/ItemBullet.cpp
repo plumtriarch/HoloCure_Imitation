@@ -4,10 +4,10 @@
 void ItemBullet::Initialize(const GameObjectDesc& _desc)
 {
     IActiveItem::Initialize(IActiveItem::ActiveItemDesc{L"../Resources/Item/Bullet.png", L"bullet",5.f});
-    speed_ = 50.f;
+    speed_ = 200.f;
     direction_ = {1.f,0.f};
-    life_time_ = 5.f;
     rotated_ = 10.f;
+    end_life_time_ = 5.f;
 }
 
 void ItemBullet::PriorityUpdate(const float _delta_time)
@@ -18,8 +18,7 @@ void ItemBullet::PriorityUpdate(const float _delta_time)
 void ItemBullet::Update(const float _delta_time)
 {
     IActiveItem::Update(_delta_time);
-    cur_life_time_ -= _delta_time;
-    if (cur_life_time_ <= 0.f)
+    if (life_time_ >= end_life_time_)
         is_dead_ = true;
     collider_component_->MoveDir(direction_[0] * speed_, direction_[1] * speed_);
 }

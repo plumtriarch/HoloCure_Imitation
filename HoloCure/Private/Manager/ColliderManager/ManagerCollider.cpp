@@ -43,28 +43,18 @@ void ManagerCollider::ProcessContacts()
 
         // Player <-> Monster 
         if ((b2Shape_GetFilter(event->sensorShapeId).categoryBits == static_cast<int32_t>(CharacterType::PLAYER) &&
-            b2Shape_GetFilter(event->visitorShapeId).categoryBits == static_cast<int32_t>(CharacterType::MONSTER)) ||
-            (b2Shape_GetFilter(event->sensorShapeId).categoryBits == static_cast<int32_t>(CharacterType::MONSTER) &&
-            b2Shape_GetFilter(event->visitorShapeId).categoryBits == static_cast<int32_t>(CharacterType::PLAYER)) )
+            b2Shape_GetFilter(event->visitorShapeId).categoryBits == static_cast<int32_t>(CharacterType::MONSTER)))
         {
             ICharacter* player = nullptr;
             ICharacter* monster = nullptr;
-            if (b2Shape_GetFilter(event->sensorShapeId).categoryBits == static_cast<int32_t>(CharacterType::PLAYER))
-            {
-                player = reinterpret_cast<ICharacter*>(b2Shape_GetUserData(shapeA));
-                monster = reinterpret_cast<ICharacter*>(b2Shape_GetUserData(shapeB));
-            }
-            else
-            {
-                monster = reinterpret_cast<ICharacter*>(b2Shape_GetUserData(shapeA));
-                player = reinterpret_cast<ICharacter*>(b2Shape_GetUserData(shapeB));
-            }
+            
+            player = reinterpret_cast<ICharacter*>(b2Shape_GetUserData(shapeA));
+            monster = reinterpret_cast<ICharacter*>(b2Shape_GetUserData(shapeB));
+            
             player->Attacked(monster->GetAttackDamage());
         }
         else if ((b2Shape_GetFilter(event->sensorShapeId).categoryBits == static_cast<int32_t>(CharacterType::MONSTER) &&
-            b2Shape_GetFilter(event->visitorShapeId).categoryBits == static_cast<int32_t>(CharacterType::PLAYER_BULLET)) ||
-            (b2Shape_GetFilter(event->sensorShapeId).categoryBits == static_cast<int32_t>(CharacterType::PLAYER_BULLET) &&
-            b2Shape_GetFilter(event->visitorShapeId).categoryBits == static_cast<int32_t>(CharacterType::MONSTER)) )
+            b2Shape_GetFilter(event->visitorShapeId).categoryBits == static_cast<int32_t>(CharacterType::PLAYER_BULLET)) )
         {
             ICharacter* monster = nullptr;
             IActiveItem* item = nullptr;

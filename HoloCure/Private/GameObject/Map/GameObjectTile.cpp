@@ -12,6 +12,7 @@ void GameObjectTile::Initialize(const GameObjectDesc& _desc)
 
 void GameObjectTile::PriorityUpdate(const float _delta_time)
 {
+    IGameObject::PriorityUpdate(_delta_time);
 }
 
 void GameObjectTile::Update(const float _delta_time)
@@ -51,4 +52,9 @@ void GameObjectTile::Render(HDC _hDC)
         }
     }
     
+}
+
+void GameObjectTile::PoolToLive()
+{
+    IGameObject::PoolToLive();
 }

@@ -19,6 +19,7 @@ void IActiveItem::Initialize(const GameObjectDesc& _desc)
 
 void IActiveItem::PriorityUpdate(const float _delta_time)
 {
+    IItem::PriorityUpdate(_delta_time);
 }
 
 void IActiveItem::Update(const float _delta_time)
@@ -37,8 +38,8 @@ void IActiveItem::Render(HDC _hDC)
 
 void IActiveItem::PoolToLive()
 {
+    IItem::PoolToLive();
     is_dead_ = false;
-    cur_life_time_ = life_time_;
 }
 
 void IActiveItem::LiveToPool()

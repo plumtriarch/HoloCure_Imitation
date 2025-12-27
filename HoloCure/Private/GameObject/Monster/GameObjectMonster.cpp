@@ -9,7 +9,7 @@ GameObjectMonster::~GameObjectMonster()
 void GameObjectMonster::Initialize(const GameObjectDesc& _desc)
 {
     render_manager_ = ServiceLocator::getInstance().get<ManagerRender>();
-    
+    object_manager_ = ServiceLocator::getInstance().get<ManagerObject>();
     sprite_component_ = ComponentSprite::CreateComponent<ComponentSprite>
         (ComponentSprite::ComponentSpriteDesc{L"../Resources/Character/monster.png", L"monster", 128, 128,3});
     sprite_rev_component_ = ComponentSprite::CreateComponent<ComponentSprite>
@@ -17,11 +17,12 @@ void GameObjectMonster::Initialize(const GameObjectDesc& _desc)
     collider_component_ = ComponentCollider::CreateComponent<ComponentCollider>
         (ComponentCollider::ComponentColliderDesc{10,static_cast<int32_t>(CharacterType::MONSTER)
         , static_cast<int32_t>(CharacterType::MONSTER), static_cast<int32_t>(CharacterType::PLAYER_BULLET) | static_cast<int32_t>(CharacterType::PLAYER)  , shared_from_this()});
-    current_hp_ = 50;
+    current_hp_ = 500;
 }
 
 void GameObjectMonster::PriorityUpdate(const float _delta_time)
 {
+    IGameObject::PriorityUpdate(_delta_time);
     array<float, 2> move_dir = {0.f,0.f};
     auto [pos_x, pos_y] = collider_component_->GetPosition();
     move_dir = {static_cast<float>(scroll_x) - pos_x, static_cast<float>(scroll_y) - pos_y};
@@ -44,7 +45,7 @@ void GameObjectMonster::Update(const float _delta_time)
 {
     sprite_component_->UpdateAnimation(_delta_time);
     sprite_rev_component_->UpdateAnimation(_delta_time);
-    if (current_hp_ < 0)
+    if (current_hp_ <= 0)
         is_dead_ = true;
 }
 
@@ -63,6 +64,7 @@ void GameObjectMonster::Render(HDC _hDC)
 
 void GameObjectMonster::PoolToLive()
 {
+    ICharacter::PoolToLive();
     collider_component_->SetContact();
     collider_component_->SetSensor();
 }
@@ -71,4 +73,12 @@ void GameObjectMonster::LiveToPool()
 {
     collider_component_->UnSetContact();
     collider_component_->UnSetSensor();
+}
+
+void GameObjectMonster::Attacked(int _damage)
+{
+    ICharacter::Attacked(_damage);
+    cout<<_damage<<endl;
+    object_manager_->MovePoolToLive(L"damage", collider_component_->GetPosition().first,
+        collider_component_->GetPosition().second, _damage);
 }

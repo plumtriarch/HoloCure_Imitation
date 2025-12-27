@@ -13,6 +13,7 @@ public:
     void Initialize(const ManagerDesc& _desc) override;
     void AddGameObjectToPool(const wstring& _tag, shared_ptr<IGameObject> _game_object);
     void MovePoolToLive(const wstring& _tag);
+    void MovePoolToLive(const wstring& _tag, const float _x, const float _y, const int32_t _temp);
     void ProcessDeadObject();
     void UpdateObject(const float _delta_time);
     

@@ -24,11 +24,12 @@ void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
         , 0, static_cast<int32_t>(CharacterType::MONSTER) | static_cast<int32_t>(CharacterType::MONSTER_BULLET), shared_from_this()});
 
     item_spawner_ = ItemSpawner::CreateGameObject<ItemSpawner>({});
-
+    item_spawner_->AddItemSpawner(L"bullet", 3.f);
 }
 
 void GameObjectPlayer::PriorityUpdate(const float _delta_time)
 {
+    IGameObject::PriorityUpdate(_delta_time);
     state_ = GameObjectPlayer::State::IDLE;
     array<float, 2> move_dir = {0.f,0.f};
     if (input_manager_->GetKey('W'))
@@ -92,6 +93,7 @@ void GameObjectPlayer::Render(HDC _hDC)
 
 void GameObjectPlayer::PoolToLive()
 {
+    ICharacter::PoolToLive();
     collider_component_->SetContact();
     collider_component_->SetSensor();
 }

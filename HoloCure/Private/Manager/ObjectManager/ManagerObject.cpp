@@ -25,6 +25,19 @@ void ManagerObject::MovePoolToLive(const wstring& _tag)
     }
 }
 
+void ManagerObject::MovePoolToLive(const wstring& _tag, const float _x, const float _y, const int32_t _temp)
+{
+    auto it = objects_pool_.find(_tag);
+    if (it != objects_pool_.end() && !it->second.empty())
+    {
+        it->second.front()->PoolToLive();
+        it->second.front()->SetPosition(_x, _y);
+        it->second.front()->SetTemp(_temp);
+        objects_live_[_tag].emplace_back(move(it->second.front()));
+        it->second.pop();
+    }
+}
+
 void ManagerObject::ProcessDeadObject()
 {
     for (auto &li : objects_live_)

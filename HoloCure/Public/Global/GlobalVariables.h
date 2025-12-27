@@ -18,6 +18,7 @@ enum class RenderGroup : uint8_t
     BOSS,
     PLAYER_ITEM,
     PLAYER,
+    DAMAGE,
     COUNT
 };
 

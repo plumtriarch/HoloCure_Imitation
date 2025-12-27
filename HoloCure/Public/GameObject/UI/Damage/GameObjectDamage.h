@@ -1,12 +1,12 @@
 #pragma once
 
-class GameObjectMonster : public ICharacter
+class GameObjectDamage : public IGameObject
 {
 public:
-    ~GameObjectMonster() override;
-    struct GameObjectMonsterDesc : public GameObjectDesc
+    ~GameObjectDamage() override = default;
+    struct GameObjectDamageDesc : public GameObjectDesc
     {
-        virtual ~GameObjectMonsterDesc() = default;
+        virtual ~GameObjectDamageDesc() = default;
     };
 public:
     void Initialize(const GameObjectDesc& _desc) override;
@@ -14,18 +14,13 @@ public:
     void Update(const float _delta_time) override;
     void LateUpdate(const float _delta_time) override;
     void Render(HDC _hDC) override;
+    void SetPosition(const float _x, const float _y) override;
     void PoolToLive() override;
     void LiveToPool() override;
-    void Attacked(int _damage) override;
+    void SetTemp(const int32_t _temp) override { damage_amount_ = _temp; }
 
 private:
     shared_ptr<class ComponentSprite> sprite_component_;
-    shared_ptr<class ComponentSprite> sprite_rev_component_;
-    shared_ptr<class ComponentCollider> collider_component_;
     shared_ptr<class ManagerRender> render_manager_;
-    shared_ptr<class ManagerObject> object_manager_;
-
-    int32_t monster_id_{};
-    float speed_{30.f};
-    bool reversed_{false};
+    int32_t damage_amount_{0};
 };

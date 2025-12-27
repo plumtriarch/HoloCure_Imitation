@@ -16,7 +16,7 @@ public:
     void WrapTilePosition(int32_t& _tile_pos, const int32_t _player_pos);
     void Render(HDC _hDC) override;
 public:
-    void PoolToLive() override {};
+    void PoolToLive() override;
     void LiveToPool() override {};
 
 private:
