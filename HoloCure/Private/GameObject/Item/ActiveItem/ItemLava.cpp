@@ -4,8 +4,6 @@
 void ItemLava::Initialize(const GameObjectDesc& _desc)
 {
     IActiveItem::Initialize(IActiveItem::ActiveItemDesc{L"../Resources/Item/lava.png", L"lava",30.f,29});
-    speed_ = 600.f;
-    end_life_time_ = 2.9f;
 }
 
 void ItemLava::PriorityUpdate(const float _delta_time)
