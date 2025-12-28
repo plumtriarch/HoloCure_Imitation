@@ -15,6 +15,12 @@ void ManagerInput::UpdateInput()
         else
             key_state_[i] = false;
     }
+    
+
+    POINT pt;
+    GetCursorPos(&pt);
+    ScreenToClient(g_hWnd, &pt);
+    mouse_x = pt.x; mouse_y = pt.y;
 }
 
 

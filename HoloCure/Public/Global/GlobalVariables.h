@@ -19,6 +19,7 @@ enum class RenderGroup : uint8_t
     PLAYER_ITEM,
     PLAYER,
     DAMAGE,
+    HUD,
     COUNT
 };
 

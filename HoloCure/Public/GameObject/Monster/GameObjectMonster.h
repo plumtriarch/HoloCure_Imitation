@@ -21,6 +21,8 @@ public:
 private:
     shared_ptr<class ComponentSprite> sprite_component_;
     shared_ptr<class ComponentSprite> sprite_rev_component_;
+    shared_ptr<class ComponentSprite> attacked_sprite_component_;
+    shared_ptr<class ComponentSprite> attacked_sprite_rev_component_;
     shared_ptr<class ComponentCollider> collider_component_;
     weak_ptr<class ManagerRender> render_manager_;
     weak_ptr<class ManagerObject> object_manager_;
@@ -28,4 +30,5 @@ private:
     int32_t monster_id_{};
     float speed_{30.f};
     bool reversed_{false};
+    float attacked_time_{};
 };

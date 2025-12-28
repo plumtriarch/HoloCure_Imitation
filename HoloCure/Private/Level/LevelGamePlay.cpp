@@ -10,6 +10,8 @@
 #include "GameObject/Item/ActiveItem/ItemMeteor.h"
 #include "GameObject/Item/ActiveItem/ItemPoison.h"
 #include "GameObject/UI/Damage/GameObjectDamage.h"
+#include "GameObject/UI/Arrow/UiArrow.h"
+#include "GameObject/UI/DieUi/UiMonsterDie.h"
 
 void LevelGamePlay::Initialize(const LevelDesc& _desc)
 {
@@ -59,6 +61,11 @@ void LevelGamePlay::LoadingResources()
     for (int i =0;i<500;i++)
         object_manager_->AddGameObjectToPool(L"damage", GameObjectDamage::CreateGameObject<GameObjectDamage>
             (GameObjectDamage::GameObjectDamageDesc{}));
+    for (int i =0;i<50;i++)
+        object_manager_->AddGameObjectToPool(L"monster_die",  UiMonsterDie::CreateGameObject<UiMonsterDie>
+            (UiMonsterDie::UiMonsterDieDesc{}));
+    object_manager_->AddGameObjectToPool(L"arrow", UiArrow::CreateGameObject<UiArrow>
+            (UiArrow::UiArrowDesc{}));
     is_loaded_ = true;
 }
 
@@ -69,6 +76,7 @@ void LevelGamePlay::LevelStart()
     for (int i =0;i<1;i++)
         object_manager_->MovePoolToLive(L"monster");
     object_manager_->MovePoolToLive(L"map");
+    object_manager_->MovePoolToLive(L"arrow");
     // object_manager_->MovePoolToLive(L"posion");
     // object_manager_->MovePoolToLive(L"bullet");
 

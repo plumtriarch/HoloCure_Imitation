@@ -14,15 +14,21 @@ void GameObjectMonster::Initialize(const GameObjectDesc& _desc)
         (ComponentSprite::ComponentSpriteDesc{L"../Resources/Character/monster.png", L"monster", 128, 128,3});
     sprite_rev_component_ = ComponentSprite::CreateComponent<ComponentSprite>
         (ComponentSprite::ComponentSpriteDesc{L"../Resources/Character/monster_rev.png", L"monster_rev", 128, 128,3});
+    attacked_sprite_component_ = ComponentSprite::CreateComponent<ComponentSprite>
+        (ComponentSprite::ComponentSpriteDesc{L"../Resources/Character/monster_damaged.png", L"monster_damaged", 128, 128,3});
+    attacked_sprite_rev_component_ = ComponentSprite::CreateComponent<ComponentSprite>
+        (ComponentSprite::ComponentSpriteDesc{L"../Resources/Character/monster_damaged_rev.png", L"monster_damaged_rev", 128, 128,3});
+    
     collider_component_ = ComponentCollider::CreateComponent<ComponentCollider>
         (ComponentCollider::ComponentColliderDesc{10,static_cast<int32_t>(CharacterType::MONSTER)
         , static_cast<int32_t>(CharacterType::MONSTER), static_cast<int32_t>(CharacterType::PLAYER_BULLET) | static_cast<int32_t>(CharacterType::PLAYER)  , shared_from_this()});
-    current_hp_ = 500;
+    current_hp_ = 25;
 }
 
 void GameObjectMonster::PriorityUpdate(const float _delta_time)
 {
     IGameObject::PriorityUpdate(_delta_time);
+    attacked_time_ -= _delta_time;
     array<float, 2> move_dir = {0.f,0.f};
     auto [pos_x, pos_y] = collider_component_->GetPosition();
     move_dir = {static_cast<float>(scroll_x) - pos_x, static_cast<float>(scroll_y) - pos_y};
@@ -45,8 +51,18 @@ void GameObjectMonster::Update(const float _delta_time)
 {
     sprite_component_->UpdateAnimation(_delta_time);
     sprite_rev_component_->UpdateAnimation(_delta_time);
+    attacked_sprite_rev_component_->UpdateAnimation(_delta_time);
+    attacked_sprite_rev_component_->UpdateAnimation(_delta_time);
     if (current_hp_ <= 0)
+    {
         is_dead_ = true;
+        if (auto object_manager = object_manager_.lock())
+        {
+            object_manager->MovePoolToLive(L"monster_die", collider_component_->GetPosition().first,
+                collider_component_->GetPosition().second,0);
+        }
+    }
+        
 }
 
 void GameObjectMonster::LateUpdate(const float _delta_time)
@@ -60,9 +76,22 @@ void GameObjectMonster::LateUpdate(const float _delta_time)
 void GameObjectMonster::Render(HDC _hDC)
 {
     if (reversed_)
-        sprite_rev_component_->Render(_hDC, monster_id_,collider_component_.get());
+    {
+        if (attacked_time_ > 0.f)
+            attacked_sprite_rev_component_->Render(_hDC, monster_id_,collider_component_.get());
+        else
+            sprite_rev_component_->Render(_hDC, monster_id_,collider_component_.get());
+    }
     else
-        sprite_component_->Render(_hDC, monster_id_, collider_component_.get());
+    {
+        if (attacked_time_ > 0.f)
+            attacked_sprite_component_->Render(_hDC, monster_id_,collider_component_.get());
+        else
+            sprite_component_->Render(_hDC, monster_id_,collider_component_.get());
+    } 
+
+
+        
 }
 
 void GameObjectMonster::PoolToLive()
@@ -86,5 +115,6 @@ void GameObjectMonster::Attacked(int _damage)
         object_manager->MovePoolToLive(L"damage", collider_component_->GetPosition().first,
             collider_component_->GetPosition().second, _damage);
     }
+    attacked_time_ = 0.05f;
     
 }

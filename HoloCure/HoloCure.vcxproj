@@ -45,7 +45,9 @@
     <ClInclude Include="Public\GameObject\Map\GameObjectTile.h" />
     <ClInclude Include="Public\GameObject\Monster\GameObjectMonster.h" />
     <ClInclude Include="Public\GameObject\Player\GameObjectPlayer.h" />
+    <ClInclude Include="Public\GameObject\UI\Arrow\UiArrow.h" />
     <ClInclude Include="Public\GameObject\UI\Damage\GameObjectDamage.h" />
+    <ClInclude Include="Public\GameObject\UI\DieUi\UiMonsterDie.h" />
     <ClInclude Include="Public\Global\GlobalFunction.h" />
     <ClInclude Include="Public\Global\GlobalVariables.h" />
     <ClInclude Include="Public\Level\ILevel.h" />
@@ -88,7 +90,9 @@
     <ClCompile Include="Private\GameObject\Map\GameObjectTile.cpp" />
     <ClCompile Include="Private\GameObject\Monster\GameObjectMonster.cpp" />
     <ClCompile Include="Private\GameObject\Player\GameObjectPlayer.cpp" />
+    <ClCompile Include="Private\GameObject\UI\Arrow\UiArrow.cpp" />
     <ClCompile Include="Private\GameObject\UI\Damage\GameObjectDamage.cpp" />
+    <ClCompile Include="Private\GameObject\UI\DieUi\UiMonsterDie.cpp" />
     <ClCompile Include="Private\Global\GlobalFunction.cpp" />
     <ClCompile Include="Private\Global\GlobalVariables.cpp" />
     <ClCompile Include="Private\Level\ILevel.cpp" />

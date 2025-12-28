@@ -24,7 +24,7 @@ void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
         , 0, static_cast<int32_t>(CharacterType::MONSTER) | static_cast<int32_t>(CharacterType::MONSTER_BULLET), shared_from_this()});
 
     item_spawner_ = ItemSpawner::CreateGameObject<ItemSpawner>({});
-    // item_spawner_->AddItemSpawner(L"bullet", 1.f);
+    item_spawner_->AddItemSpawner(L"bullet", 1.f);
     // item_spawner_->AddItemSpawner(L"ax", 1.f);
     // item_spawner_->AddItemSpawner(L"stick", 1.f);
     // item_spawner_->AddItemSpawner(L"meteor", 0.1f);

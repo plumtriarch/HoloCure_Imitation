@@ -80,6 +80,16 @@ void ComponentSprite::RenderRotate(HDC _hDC, const float _rotated, ComponentColl
     }
 }
 
+void ComponentSprite::RenderRotate(HDC _hDC, const float _rotated, const int32_t _x, const int32_t _y)
+{
+    if (auto image_manager = image_manager_.lock())
+    {
+        image_manager->DrawPngRotate(_hDC, image_, _x - (width_/2) - scroll_x + g_window_size_x/2, 
+            _y - (height_/2) - scroll_y+ g_window_size_y/2,
+            width_, height_,_rotated);
+    }
+}
+
 void ComponentSprite::RenderAlpha(HDC _hDC, const float _alpha, ComponentCollider* _collider)
 {
     auto [x, y] = _collider->GetPosition();
@@ -88,6 +98,18 @@ void ComponentSprite::RenderAlpha(HDC _hDC, const float _alpha, ComponentCollide
         image_manager->DrawPngWithAlpha(_hDC, image_, x - (width_/2) - scroll_x + g_window_size_x/2, 
             y - (height_/2) - scroll_y+ g_window_size_y/2,
             width_, height_, _alpha);
+    }
+}
+
+void ComponentSprite::RenderAnimation(HDC _hDC)
+{
+    if (auto image_manager = image_manager_.lock())
+    {
+        image_manager->DrawPng(_hDC, image_, static_cast<int32_t>(position_x) - (width_/2) - scroll_x + g_window_size_x/2, 
+            static_cast<int32_t>(position_y) - (height_/2) - scroll_y+ g_window_size_y/2,
+            width_, height_,
+            width_ * animation_index_, 0,
+            width_, height_);
     }
 }
 
