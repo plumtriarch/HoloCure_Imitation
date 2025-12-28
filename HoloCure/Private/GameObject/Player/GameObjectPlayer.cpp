@@ -24,10 +24,10 @@ void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
         , 0, static_cast<int32_t>(CharacterType::MONSTER) | static_cast<int32_t>(CharacterType::MONSTER_BULLET), shared_from_this()});
 
     item_spawner_ = ItemSpawner::CreateGameObject<ItemSpawner>({});
-    // item_spawner_->AddItemSpawner(L"bullet", 3.f);
+    // item_spawner_->AddItemSpawner(L"bullet", 1.f);
     // item_spawner_->AddItemSpawner(L"ax", 1.f);
     // item_spawner_->AddItemSpawner(L"stick", 1.f);
-    item_spawner_->AddItemSpawner(L"lava", 1.f);
+    // item_spawner_->AddItemSpawner(L"lava", 1.f);
 }
 
 void GameObjectPlayer::PriorityUpdate(const float _delta_time)
@@ -35,28 +35,32 @@ void GameObjectPlayer::PriorityUpdate(const float _delta_time)
     IGameObject::PriorityUpdate(_delta_time);
     state_ = GameObjectPlayer::State::IDLE;
     array<float, 2> move_dir = {0.f,0.f};
-    if (input_manager_->GetKey('W'))
+    if (auto input_manager = input_manager_.lock())
     {
-        move_dir[1] -= speed_ / _delta_time;
-        state_ = GameObjectPlayer::State::RUN;
+        if (input_manager->GetKey('W'))
+        {
+            move_dir[1] -= speed_ / _delta_time;
+            state_ = GameObjectPlayer::State::RUN;
+        }
+        else if (input_manager->GetKey('S'))
+        {
+            move_dir[1] += speed_ / _delta_time; 
+            state_ = GameObjectPlayer::State::RUN;
+        }
+        if (input_manager->GetKey('A'))
+        {
+            move_dir[0] -= speed_ / _delta_time; 
+            state_ = GameObjectPlayer::State::RUN;
+            reversed_ = true;
+        }
+        else if (input_manager->GetKey('D'))
+        {
+            move_dir[0] += speed_ / _delta_time; 
+            state_ = GameObjectPlayer::State::RUN;
+            reversed_ = false;
+        }
     }
-    else if (input_manager_->GetKey('S'))
-    {
-        move_dir[1] += speed_ / _delta_time; 
-        state_ = GameObjectPlayer::State::RUN;
-    }
-    if (input_manager_->GetKey('A'))
-    {
-        move_dir[0] -= speed_ / _delta_time; 
-        state_ = GameObjectPlayer::State::RUN;
-        reversed_ = true;
-    }
-    else if (input_manager_->GetKey('D'))
-    {
-        move_dir[0] += speed_ / _delta_time; 
-        state_ = GameObjectPlayer::State::RUN;
-        reversed_ = false;
-    }
+    
     if (move_dir[0] != 0.f || move_dir[1] != 0.f)
     {
         float length = sqrt(move_dir[0] * move_dir[0] + move_dir[1] * move_dir[1]);
@@ -83,7 +87,11 @@ void GameObjectPlayer::LateUpdate(const float _delta_time)
     scroll_y = static_cast<int32_t>(pos_y);
     scroll_x = static_cast<int32_t>(pos_x);
 
-    render_manager_->AddRenderGroup(RenderGroup::PLAYER, shared_from_this());
+    if (auto render_manager = render_manager_.lock())
+    {
+        render_manager->AddRenderGroup(RenderGroup::PLAYER, shared_from_this());
+    }
+    
 }
 
 void GameObjectPlayer::Render(HDC _hDC)

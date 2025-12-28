@@ -28,7 +28,7 @@ public:
     bool GetAnimationEnd() const {return animation_end;}
     pair<int32_t, int32_t> GetPosition() {return {static_cast<int32_t>(position_x), static_cast<int32_t>(position_y)}; }
 private:
-    shared_ptr<class ManagerImage> image_manager_{};
+    weak_ptr<class ManagerImage> image_manager_{};
     float position_x{}, position_y{};
     int32_t width_{}, height_{};
     int32_t src_left_top_x_{}, src_left_top_y_{};

@@ -28,7 +28,7 @@ public:
     void UnSetSensor();
     
 private:
-    shared_ptr<class ManagerCollider> collider_manager_;
+    weak_ptr<class ManagerCollider> collider_manager_;
     b2BodyId circle_body_{};
     b2BodyDef body_def_{};
     

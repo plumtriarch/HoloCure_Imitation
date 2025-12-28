@@ -28,7 +28,10 @@ void IActiveItem::Update(const float _delta_time)
 
 void IActiveItem::LateUpdate(const float _delta_time)
 {
-    render_manager_->AddRenderGroup(RenderGroup::PLAYER_ITEM, shared_from_this());
+    if (auto render_manager = render_manager_.lock())
+    {
+        render_manager->AddRenderGroup(RenderGroup::PLAYER_ITEM, shared_from_this());
+    }
 }
 
 void IActiveItem::Render(HDC _hDC)

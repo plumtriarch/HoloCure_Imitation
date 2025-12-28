@@ -3,7 +3,7 @@
 
 void ItemBomb::Initialize(const GameObjectDesc& _desc)
 {
-    // IActiveItem::Initialize(_desc);
+    IActiveItem::Initialize(IActiveItem::ActiveItemDesc{L"../Resources/Item/Bullet.png", L"bullet",5.f});
 }
 
 void ItemBomb::PriorityUpdate(const float _delta_time)

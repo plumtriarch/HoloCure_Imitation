@@ -23,7 +23,11 @@ void GameObjectDamage::Update(const float _delta_time)
 
 void GameObjectDamage::LateUpdate(const float _delta_time)
 {
-    render_manager_->AddRenderGroup(RenderGroup::DAMAGE, shared_from_this());
+    if (auto render_manager = render_manager_.lock() )
+    {
+        render_manager->AddRenderGroup(RenderGroup::DAMAGE, shared_from_this());
+    }
+    
 }
 
 void GameObjectDamage::Render(HDC _hDC)

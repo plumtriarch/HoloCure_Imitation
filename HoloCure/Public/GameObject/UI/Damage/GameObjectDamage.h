@@ -21,6 +21,6 @@ public:
 
 private:
     shared_ptr<class ComponentSprite> sprite_component_;
-    shared_ptr<class ManagerRender> render_manager_;
+    weak_ptr<class ManagerRender> render_manager_;
     int32_t damage_amount_{0};
 };

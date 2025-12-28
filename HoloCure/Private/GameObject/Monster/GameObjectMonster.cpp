@@ -51,7 +51,10 @@ void GameObjectMonster::Update(const float _delta_time)
 
 void GameObjectMonster::LateUpdate(const float _delta_time)
 {
-    render_manager_->AddRenderGroup(RenderGroup::PLAYER, shared_from_this());
+    if (auto render_manager = render_manager_.lock())
+    {
+        render_manager->AddRenderGroup(RenderGroup::PLAYER, shared_from_this());
+    }
 }
 
 void GameObjectMonster::Render(HDC _hDC)
@@ -78,7 +81,10 @@ void GameObjectMonster::LiveToPool()
 void GameObjectMonster::Attacked(int _damage)
 {
     ICharacter::Attacked(_damage);
-    cout<<_damage<<endl;
-    object_manager_->MovePoolToLive(L"damage", collider_component_->GetPosition().first,
-        collider_component_->GetPosition().second, _damage);
+    if (auto object_manager = object_manager_.lock())
+    {
+        object_manager->MovePoolToLive(L"damage", collider_component_->GetPosition().first,
+            collider_component_->GetPosition().second, _damage);
+    }
+    
 }

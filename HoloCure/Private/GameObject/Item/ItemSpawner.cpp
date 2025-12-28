@@ -20,7 +20,7 @@ void ItemSpawner::Update(const float _delta_time)
         if (el.second.first <= 0.f)
         {
             el.second.first = el.second.second;
-            object_manager_->MovePoolToLive(el.first);
+            object_manager_.lock()->MovePoolToLive(el.first);
         }
     }
 }

@@ -31,7 +31,10 @@ void ComponentCollider::Initialize(const ComponentDesc& _desc)
     sensor_circle_shape_def_.userData = reinterpret_cast<void*>(desc.character.get());
     sensor_circle_shape_def_.enableSensorEvents = false;
     
-    circle_body_ = collider_manager_->CreateBody(body_def_);
+    if (auto collider_manager = collider_manager_.lock())
+    {
+        circle_body_ = collider_manager->CreateBody(body_def_);
+    }
     circle_shape_id_ = b2CreateCircleShape(circle_body_, &circle_shape_def_, &circle_);
     sensor_circle_shape_id_ = b2CreateCircleShape(circle_body_, &sensor_circle_shape_def_, &sensor_circle_);
 }
@@ -40,7 +43,10 @@ void ComponentCollider::DestroyCollider()
 {
     if (b2Body_IsValid(circle_body_))
     {
-        collider_manager_->DestroyBody(circle_body_);
+        if (auto collider_manager = collider_manager_.lock())
+        {
+            collider_manager->DestroyBody(circle_body_);
+        }
         circle_body_ = b2_nullBodyId;
     }
 }

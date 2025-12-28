@@ -20,6 +20,6 @@ public:
 public:
     void AddItemSpawner(const wstring& _item_tag, float _spawn_delay);
 private:
-    shared_ptr<ManagerObject> object_manager_;
+    weak_ptr<ManagerObject> object_manager_;
     unordered_map<wstring, pair<float,float>> item_spawners_; 
 };
