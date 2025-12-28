@@ -27,7 +27,7 @@ void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
     // item_spawner_->AddItemSpawner(L"bullet", 1.f);
     // item_spawner_->AddItemSpawner(L"ax", 1.f);
     // item_spawner_->AddItemSpawner(L"stick", 1.f);
-    // item_spawner_->AddItemSpawner(L"lava", 1.f);
+    // item_spawner_->AddItemSpawner(L"meteor", 0.1f);
 }
 
 void GameObjectPlayer::PriorityUpdate(const float _delta_time)

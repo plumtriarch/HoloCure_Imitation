@@ -7,8 +7,8 @@
 #include "GameObject/Item/ActiveItem/ItemAx.h"
 #include "GameObject/Item/ActiveItem/ItemStick.h"
 #include "GameObject/Item/ActiveItem/ItemLava.h"
+#include "GameObject/Item/ActiveItem/ItemMeteor.h"
 #include "GameObject/Item/ActiveItem/ItemPoison.h"
-#include "GameObject/Item/ActiveItem/ItemBomb.h"
 #include "GameObject/UI/Damage/GameObjectDamage.h"
 
 void LevelGamePlay::Initialize(const LevelDesc& _desc)
@@ -47,11 +47,11 @@ void LevelGamePlay::LoadingResources()
     for (int i =0;i<20;i++)
         object_manager_->AddGameObjectToPool(L"stick", ItemStick::CreateGameObject<ItemStick>
             (ItemStick::ItemStickDesc{}));
+    for (int i =0;i<100;i++)
+        object_manager_->AddGameObjectToPool(L"meteor", ItemMeteor::CreateGameObject<ItemMeteor>
+            (ItemMeteor::ItemMeteorDesc{}));
     for (int i =0;i<20;i++)
-        object_manager_->AddGameObjectToPool(L"bomb", ItemBomb::CreateGameObject<ItemBomb>
-            (ItemBomb::ItemBombDesc{}));
-    for (int i =0;i<20;i++)
-        object_manager_->AddGameObjectToPool(L"lava", ItemBomb::CreateGameObject<ItemBomb>
+        object_manager_->AddGameObjectToPool(L"lava", ItemLava::CreateGameObject<ItemLava>
             (ItemLava::ItemLavaDesc{}));
     for (int i =0;i<6;i++)
         object_manager_->AddGameObjectToPool(L"posion", ItemPoison::CreateGameObject<ItemPoison>
