@@ -82,3 +82,27 @@ void ManagerImage::DrawPngRotate(HDC _hDC, Gdiplus::Image* _image, const int _de
         graphics.ResetTransform();
     }
 }
+
+void ManagerImage::DrawPngWithAlpha(HDC hDC, Gdiplus::Image* _image, const int _dest_x, const int _dest_y,
+    const int _dest_width, const int _dest_height, float _alpha)
+{
+    if (_image) {
+        Gdiplus::Graphics graphics(hDC);
+        graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQualityBicubic);
+
+        // 색상 행렬을 사용해 투명도 설정
+        Gdiplus::ColorMatrix colorMatrix = {
+            1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 0.0f, _alpha, 0.0f,  // 마지막 열의 alpha 값 조절
+            0.0f, 0.0f, 0.0f, 0.0f, 1.0f
+        };
+
+        Gdiplus::ImageAttributes imgAttr;
+        imgAttr.SetColorMatrix(&colorMatrix, Gdiplus::ColorMatrixFlagsDefault, Gdiplus::ColorAdjustTypeBitmap);
+
+        Gdiplus::Rect rect(_dest_x, _dest_y, _dest_width, _dest_height);
+        graphics.DrawImage(_image, rect, 0, 0, _image->GetWidth(), _image->GetHeight(), Gdiplus::UnitPixel, &imgAttr);
+    }
+}

@@ -17,4 +17,8 @@ public:
     void PoolToLive() override;
     void LiveToPool() override;
     void SetPosition(const float _x, const float _y) override;
+    
+private:
+    int phase{};
+    bool attack_done_{false};
 };

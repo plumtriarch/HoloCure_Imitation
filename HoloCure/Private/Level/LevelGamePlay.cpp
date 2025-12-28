@@ -51,8 +51,11 @@ void LevelGamePlay::LoadingResources()
         object_manager_->AddGameObjectToPool(L"bomb", ItemBomb::CreateGameObject<ItemBomb>
             (ItemBomb::ItemBombDesc{}));
     for (int i =0;i<20;i++)
-        object_manager_->AddGameObjectToPool(L"lava", ItemBomb::CreateGameObject<ItemLava>
+        object_manager_->AddGameObjectToPool(L"lava", ItemBomb::CreateGameObject<ItemBomb>
             (ItemLava::ItemLavaDesc{}));
+    for (int i =0;i<6;i++)
+        object_manager_->AddGameObjectToPool(L"posion", ItemPoison::CreateGameObject<ItemPoison>
+            (ItemPoison::ItemPoisonDesc{}));
     for (int i =0;i<500;i++)
         object_manager_->AddGameObjectToPool(L"damage", GameObjectDamage::CreateGameObject<GameObjectDamage>
             (GameObjectDamage::GameObjectDamageDesc{}));
@@ -66,7 +69,7 @@ void LevelGamePlay::LevelStart()
     for (int i =0;i<1;i++)
         object_manager_->MovePoolToLive(L"monster");
     object_manager_->MovePoolToLive(L"map");
-    // object_manager_->MovePoolToLive(L"damage");
+    // object_manager_->MovePoolToLive(L"posion");
     // object_manager_->MovePoolToLive(L"bullet");
 
 }

@@ -21,6 +21,7 @@ public:
     void Render(HDC _hDC, const int32_t _state_index);
     void Render(HDC _hDC, const int32_t _state_index, ComponentCollider* _collider);
     void RenderRotate(HDC _hDC, const float _rotated, ComponentCollider* _collider);
+    void RenderAlpha(HDC _hDC, const float _alpha, ComponentCollider* _collider);
     void UpdateAnimation(const float _delta_time);
     void SetPosition(const float _x, const float _y) { position_x = _x; position_y = _y; }
     void MovePosition(const float _x, const float _y) { position_x += _x; position_y += _y; }

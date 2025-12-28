@@ -80,6 +80,17 @@ void ComponentSprite::RenderRotate(HDC _hDC, const float _rotated, ComponentColl
     }
 }
 
+void ComponentSprite::RenderAlpha(HDC _hDC, const float _alpha, ComponentCollider* _collider)
+{
+    auto [x, y] = _collider->GetPosition();
+    if (auto image_manager = image_manager_.lock())
+    {
+        image_manager->DrawPngWithAlpha(_hDC, image_, x - (width_/2) - scroll_x + g_window_size_x/2, 
+            y - (height_/2) - scroll_y+ g_window_size_y/2,
+            width_, height_, _alpha);
+    }
+}
+
 void ComponentSprite::UpdateAnimation(const float _delta_time)
 {
     sum_time_ += _delta_time;
