@@ -12,6 +12,8 @@
 #include "GameObject/UI/Damage/GameObjectDamage.h"
 #include "GameObject/UI/Arrow/UiArrow.h"
 #include "GameObject/UI/DieUi/UiMonsterDie.h"
+#include "GameObject/UI/KillCount/UiKillCount.h"
+#include "GameObject/UI/Time/UiTime.h"
 
 void LevelGamePlay::Initialize(const LevelDesc& _desc)
 {
@@ -66,6 +68,10 @@ void LevelGamePlay::LoadingResources()
             (UiMonsterDie::UiMonsterDieDesc{}));
     object_manager_->AddGameObjectToPool(L"arrow", UiArrow::CreateGameObject<UiArrow>
             (UiArrow::UiArrowDesc{}));
+    object_manager_->AddGameObjectToPool(L"kill_count", UiKillCount::CreateGameObject<UiKillCount>
+            (UiKillCount::UiKillCountDesc{}));
+    object_manager_->AddGameObjectToPool(L"timer", UiTime::CreateGameObject<UiTime>
+            (UiTime::UiTimeDesc{}));
     is_loaded_ = true;
 }
 
@@ -77,7 +83,8 @@ void LevelGamePlay::LevelStart()
         object_manager_->MovePoolToLive(L"monster");
     object_manager_->MovePoolToLive(L"map");
     object_manager_->MovePoolToLive(L"arrow");
-    // object_manager_->MovePoolToLive(L"posion");
+    object_manager_->MovePoolToLive(L"kill_count");
+    object_manager_->MovePoolToLive(L"timer");
     // object_manager_->MovePoolToLive(L"bullet");
 
 }

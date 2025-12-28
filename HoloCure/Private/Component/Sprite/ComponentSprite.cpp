@@ -113,6 +113,18 @@ void ComponentSprite::RenderAnimation(HDC _hDC)
     }
 }
 
+void ComponentSprite::RenderUi(HDC _hDC)
+{
+    if (auto image_manager = image_manager_.lock())
+    {
+        image_manager->DrawPng(_hDC, image_, static_cast<int32_t>(position_x) - (width_/2) + g_window_size_x/2, 
+            static_cast<int32_t>(position_y) - (height_/2) + g_window_size_y/2,
+            width_, height_,
+            src_left_top_x_, src_left_top_y_,
+            width_, height_);
+    }
+}
+
 void ComponentSprite::UpdateAnimation(const float _delta_time)
 {
     sum_time_ += _delta_time;

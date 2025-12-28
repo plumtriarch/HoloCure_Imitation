@@ -9,6 +9,7 @@ extern int32_t scroll_y;
 extern int32_t mouse_x;
 extern int32_t mouse_y;
 
+extern int32_t kill_count;
 extern HWND g_hWnd;
 
 enum class RenderGroup : uint8_t

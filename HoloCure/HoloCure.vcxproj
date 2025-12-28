@@ -48,6 +48,8 @@
     <ClInclude Include="Public\GameObject\UI\Arrow\UiArrow.h" />
     <ClInclude Include="Public\GameObject\UI\Damage\GameObjectDamage.h" />
     <ClInclude Include="Public\GameObject\UI\DieUi\UiMonsterDie.h" />
+    <ClInclude Include="Public\GameObject\UI\KillCount\UiKillCount.h" />
+    <ClInclude Include="Public\GameObject\UI\Time\UiTime.h" />
     <ClInclude Include="Public\Global\GlobalFunction.h" />
     <ClInclude Include="Public\Global\GlobalVariables.h" />
     <ClInclude Include="Public\Level\ILevel.h" />
@@ -93,6 +95,8 @@
     <ClCompile Include="Private\GameObject\UI\Arrow\UiArrow.cpp" />
     <ClCompile Include="Private\GameObject\UI\Damage\GameObjectDamage.cpp" />
     <ClCompile Include="Private\GameObject\UI\DieUi\UiMonsterDie.cpp" />
+    <ClCompile Include="Private\GameObject\UI\KillCount\UiKillCount.cpp" />
+    <ClCompile Include="Private\GameObject\UI\Time\UiTime.cpp" />
     <ClCompile Include="Private\Global\GlobalFunction.cpp" />
     <ClCompile Include="Private\Global\GlobalVariables.cpp" />
     <ClCompile Include="Private\Level\ILevel.cpp" />
