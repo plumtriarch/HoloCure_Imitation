@@ -6,11 +6,13 @@ public:
     ~IActiveItem() override;
     struct ActiveItemDesc : public GameObjectDesc
     {
-        ActiveItemDesc(const wstring& _path, const wstring& _tag, const float _radius) : path(_path), tag(_tag), radius(_radius) {}
+        ActiveItemDesc(const wstring& _path, const wstring& _tag, const float _radius, const int32_t _animation_size = 1) 
+        : path(_path), tag(_tag), radius(_radius), animation_size(_animation_size) {}
         virtual ~ActiveItemDesc() = default;
         const wstring path;
         const wstring tag;
         const float radius;
+        const int32_t animation_size;
     };
 public:
     void Initialize(const GameObjectDesc& _desc) override;

@@ -4,7 +4,7 @@
 void ItemBullet::Initialize(const GameObjectDesc& _desc)
 {
     IActiveItem::Initialize(IActiveItem::ActiveItemDesc{L"../Resources/Item/Bullet.png", L"bullet",5.f});
-    speed_ = 200.f;
+    speed_ = 600.f;
     direction_ = {1.f,0.f};
     rotated_ = 10.f;
     end_life_time_ = 5.f;

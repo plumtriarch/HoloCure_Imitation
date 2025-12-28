@@ -62,9 +62,11 @@ void ComponentSprite::RenderRotate(HDC _hDC, const float _rotated, ComponentColl
 void ComponentSprite::UpdateAnimation(const float _delta_time)
 {
     sum_time_ += _delta_time;
-    if (sum_time_ > 0.15f)
+    if (sum_time_ > 0.10f)
     {
         animation_index_ += static_cast<int32_t>(sum_time_ / 0.15f);
+        if ( animation_index_ >= animation_size_)
+            animation_end = true;
         animation_index_ %= animation_size_;
         sum_time_ = fmod(sum_time_, 0.15f);
     }

@@ -34,7 +34,12 @@
     <ClInclude Include="Public\GameObject\Character\ICharacter.h" />
     <ClInclude Include="Public\GameObject\IGameObject.h" />
     <ClInclude Include="Public\GameObject\Item\ActiveItem\IActiveItem.h" />
+    <ClInclude Include="Public\GameObject\Item\ActiveItem\ItemAx.h" />
+    <ClInclude Include="Public\GameObject\Item\ActiveItem\ItemBomb.h" />
     <ClInclude Include="Public\GameObject\Item\ActiveItem\ItemBullet.h" />
+    <ClInclude Include="Public\GameObject\Item\ActiveItem\ItemLava.h" />
+    <ClInclude Include="Public\GameObject\Item\ActiveItem\ItemPoison.h" />
+    <ClInclude Include="Public\GameObject\Item\ActiveItem\ItemStick.h" />
     <ClInclude Include="Public\GameObject\Item\IItem.h" />
     <ClInclude Include="Public\GameObject\Item\ItemSpawner.h" />
     <ClInclude Include="Public\GameObject\Map\GameObjectTile.h" />
@@ -72,7 +77,12 @@
     <ClCompile Include="Private\GameObject\Character\ICharacter.cpp" />
     <ClCompile Include="Private\GameObject\IGameObject.cpp" />
     <ClCompile Include="Private\GameObject\Item\ActiveItem\IActiveItem.cpp" />
+    <ClCompile Include="Private\GameObject\Item\ActiveItem\ItemAx.cpp" />
+    <ClCompile Include="Private\GameObject\Item\ActiveItem\ItemBomb.cpp" />
     <ClCompile Include="Private\GameObject\Item\ActiveItem\ItemBullet.cpp" />
+    <ClCompile Include="Private\GameObject\Item\ActiveItem\ItemLava.cpp" />
+    <ClCompile Include="Private\GameObject\Item\ActiveItem\ItemPoison.cpp" />
+    <ClCompile Include="Private\GameObject\Item\ActiveItem\ItemStick.cpp" />
     <ClCompile Include="Private\GameObject\Item\IItem.cpp" />
     <ClCompile Include="Private\GameObject\Item\ItemSpawner.cpp" />
     <ClCompile Include="Private\GameObject\Map\GameObjectTile.cpp" />

@@ -12,6 +12,7 @@ void ManagerCollider::Initialize(const ManagerDesc& _desc)
     b2WorldDef world_def;
     world_def = b2DefaultWorldDef();
     world_def.gravity = b2Vec2({0.0f, 0.0f});
+    world_def.maximumLinearSpeed =5000.f;
     world_ = b2CreateWorld(&world_def);
 }
 

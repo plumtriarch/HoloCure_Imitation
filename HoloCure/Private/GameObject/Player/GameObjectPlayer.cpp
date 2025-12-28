@@ -24,7 +24,10 @@ void GameObjectPlayer::Initialize(const GameObjectDesc& _desc)
         , 0, static_cast<int32_t>(CharacterType::MONSTER) | static_cast<int32_t>(CharacterType::MONSTER_BULLET), shared_from_this()});
 
     item_spawner_ = ItemSpawner::CreateGameObject<ItemSpawner>({});
-    item_spawner_->AddItemSpawner(L"bullet", 3.f);
+    // item_spawner_->AddItemSpawner(L"bullet", 3.f);
+    // item_spawner_->AddItemSpawner(L"ax", 1.f);
+    // item_spawner_->AddItemSpawner(L"stick", 1.f);
+    item_spawner_->AddItemSpawner(L"lava", 1.f);
 }
 
 void GameObjectPlayer::PriorityUpdate(const float _delta_time)

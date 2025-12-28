@@ -24,6 +24,8 @@ public:
     void UpdateAnimation(const float _delta_time);
     void SetPosition(const float _x, const float _y) { position_x = _x; position_y = _y; }
     void MovePosition(const float _x, const float _y) { position_x += _x; position_y += _y; }
+    void ResetAnimation() {animation_end = false;}
+    bool GetAnimationEnd() const {return animation_end;}
     pair<int32_t, int32_t> GetPosition() {return {static_cast<int32_t>(position_x), static_cast<int32_t>(position_y)}; }
 private:
     shared_ptr<class ManagerImage> image_manager_{};
@@ -33,4 +35,5 @@ private:
     int32_t animation_index_{0}, animation_size_{0};
     Gdiplus::Image* image_{nullptr}; 
     float sum_time_{0.f};
+    bool animation_end{false};
 };
